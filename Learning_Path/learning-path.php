@@ -1,10 +1,11 @@
 <?php
 ini_set('display_errors', 1);
+
     class LearningPath {
         private $pathName;
         private $pathCreator;
         private $pathDescription;
-        protected $pathResources;
+        private $pathResources;
 
         // Constructor
         public function __construct($name, $creator, $desc, $resources)
@@ -29,14 +30,28 @@ ini_set('display_errors', 1);
         }
     }
 
-    class Resources extends LearningPath {
-        protected $resourceName;
-        protected $resourceUrl;
+    // Object for individual resources.
+    class Resources {
+        private $resourceName;
+        private $resourceUrl;
 
         public function __construct($name, $url)
         {
             $this->resourceName = $name;
             $this->resourceUrl = $url;
+        }
+
+        // Getter
+        public function __get($property) {
+            if (property_exists($this, $property)) {
+                return $this->$property;
+            }
+        }
+        // Setter
+        public function __set($property, $value) {
+            if (property_exists($this, $property)) {
+                $this->$property = $value;
+            }
         }
     }
 
@@ -47,13 +62,7 @@ ini_set('display_errors', 1);
 );
     $objTest = new LearningPath('PHP', 'Jay', 'Test desc.', $resource);
 
-    echo "Object Name: " . $objTest->__get('pathName') . "<br>";
-    echo "Object Creator: " . $objTest->__get('pathCreator') . "<br>";
-    echo "Object Description: " . $objTest->__get('pathDescription') . "<br>";
-    echo "Object Resource 1 Name: " . $objTest->__get('pathResources')['Resource 1']->__get('resourceName') . "<br>";
-    echo "Object Resource 1 URL: " . $objTest->__get('pathResources')['Resource 1']->__get('resourceUrl') . "<br>";
-    echo "Object Resource 2 Name: " . $objTest->__get('pathResources')['Resource 2']->__get('resourceName') . "<br>";
-    echo "Object Resource 2 URL: " . $objTest->__get('pathResources')['Resource 2']->__get('resourceUrl') . "<br>";
+
 ?>
 
 <!DOCTYPE html>
@@ -68,7 +77,17 @@ ini_set('display_errors', 1);
     <!-- TO DO:
             * storage for learning paths -->
     <h3>Learning Paths</h3>
-    
+    <?php 
+        echo "Path Name: " . $objTest->__get('pathName') . "<br>";
+        echo "Path Creator: " . $objTest->__get('pathCreator') . "<br>";
+        echo "Path Description: " . $objTest->__get('pathDescription') . "<br>";
+        echo "Path Resource 1 Name: " . $objTest->__get('pathResources')['Resource 1']->__get('resourceName') . "<br>";
+        echo "Path Resource 1 URL: " . $objTest->__get('pathResources')['Resource 1']->__get('resourceUrl') . "<br>";
+        echo "Path Resource 2 Name: " . $objTest->__get('pathResources')['Resource 2']->__get('resourceName') . "<br>";
+        echo "Path Resource 2 URL: " . $objTest->__get('pathResources')['Resource 2']->__get('resourceUrl') . "<br>";
+        echo "<br>";
+        echo "<pre>"; print_r($objTest); echo "<pre>";
+    ?>
 
 </body>
 </html>
