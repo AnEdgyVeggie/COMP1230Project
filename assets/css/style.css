@@ -1,0 +1,42 @@
+body {
+    background-color: rgb(24, 1, 1);
+    flex-direction: column;
+    display: flex;
+    
+    justify-content: center;
+    align-items: center;
+    height: 99vh
+}
+
+nav {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    padding: 40px 20px;
+    color: white;
+    border-bottom: 2px solid white;
+}
+a {
+    color: white;
+
+}
+label {
+    color: white;
+}
+
+form {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 200px 300px;
+    font-size: 20px;
+    border: 3px solid white;
+    padding: 200px;
+
+}
+input {
+    height: 25px;
+}
+button {
+    width: 100px;
+    height: 25px;
+}
