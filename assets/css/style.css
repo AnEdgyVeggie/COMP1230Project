@@ -3,7 +3,11 @@ body {
     flex-direction: column;
     display: flex;
     align-items: center;
-    height: 99vh
+    height: 99vh;
+    width: 99vw;
+}
+header {
+    width: 80%;
 }
 
 nav {
@@ -11,6 +15,7 @@ nav {
     justify-content: space-between;
     width: 100%;
     padding: 40px 20px;
+    margin: 30px;
     color: white;
     border-bottom: 2px solid white;
 }
