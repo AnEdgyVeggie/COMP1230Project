@@ -3,7 +3,7 @@ const register = (firstName, lastName, email, password, confirmPass) => {
     // const emailRegex = /^[a-z0-9]+@[a-z]*\.[a-z]*/
     let error = false;
 
-    // initializeErrorTags();
+    initializeErrorTags();
 
     if (!nameRegex.test(firstName) || firstName === "") {
         document.getElementById("error-fname").innerText = 
@@ -40,6 +40,9 @@ const register = (firstName, lastName, email, password, confirmPass) => {
     document.cookie = "email=" + email;
     document.cookie = "password=" + password;
     console.log(document.cookie);
+
+    const form = document.getElementById("register-form");
+    form.setAttribute("method", "post")
 }
 
 const login = (email, password) => {
