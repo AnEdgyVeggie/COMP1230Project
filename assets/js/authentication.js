@@ -3,7 +3,7 @@ const register = (firstName, lastName, email, password, confirmPass) => {
     // const emailRegex = /^[a-z0-9]+@[a-z]*\.[a-z]*/
     let error = false;
 
-    initializeErrorTags();
+    // initializeErrorTags();
 
     if (!nameRegex.test(firstName) || firstName === "") {
         document.getElementById("error-fname").innerText = 
