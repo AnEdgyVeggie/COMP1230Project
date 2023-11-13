@@ -27,16 +27,33 @@ label {
 form {
     display: grid;
     gap: 20px;
-    grid-template-columns: 200px 300px;
+    grid-template-columns: 500px;
     font-size: 20px;
     border: 3px solid white;
-    padding: 200px;
+    padding: 50px;
+
+}
+.fields {
+    display: grid;
+    grid-template-columns: 200px 300px;
+}
+.error-message {
+    margin-top: -20px;
+    margin-bottom: 10px;;
+    height:30px;
+    font-size: 14px;
+    text-align: center;
 
 }
 input {
     height: 25px;
+
 }
 button {
     width: 100px;
     height: 25px;
+}
+.error {
+    color: blue
+
 }

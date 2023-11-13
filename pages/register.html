@@ -22,21 +22,45 @@
     </header>
 
     <form >
-        <label for="firstname">First Name: </label>
-        <input type="text" name="firstname" id="firstname">
+        <div class="fields">
+            <label for="firstname">First Name: </label>
+            <input type="text" name="firstname" id="firstname">
+        </div>
+        <div class="error-message">
+             <p id="error-fname" class="error"></p> 
+        </div>
 
-        <label for="lastname">Last Name: </label>
-        <input type="text" name="lastname" id="lastname">
+        <div class="fields">
+            <label for="lastname">Last Name: </label>
+            <input type="text" name="lastname" id="lastname">
+        </div>
+        <div class="error-message">
+            <p id="error-lname" class="error"></p> 
+        </div>
 
-        <label for="email">Email Address: </label>
-        <input type="text" name="email" id="email">
+        <div class="fields">
+            <label for="email">Email Address: </label>
+            <input type="text" name="email" id="email">
+        </div>
+        <div class="error-message">
+            <p id="error-email" class="error"></p>
+        </div>
 
-        <label for="password">Password: </label>
-        <input type="text" name="password" id="password">
-        
-        <label for="confirm_password">Confirm Password: </label>
-        <input type="text" name="confirm_password" id="confirm_password">
+        <div class="fields">          
+            <label for="password">Password: </label>
+            <input type="password" name="password" id="password">
+        </div>
+        <div class="error-message">
+            <p id="error-password" class="error"></p>
+        </div>
 
+        <div class="fields">
+            <label for="confirm_password">Confirm Password: </label>
+            <input type="password" name="confirm_password" id="confirm_password">
+        </div>
+        <div class="error-message">
+            <p id="error-confirmpw" class="error"></p>
+        </div>
 
     </form>
     <button  onclick="getFormValues('register')">REGISTER</button>

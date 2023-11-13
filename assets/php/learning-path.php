@@ -76,7 +76,7 @@ ini_set('display_errors', 1);
     <!-- Learning paths with the ability to view, create, edit, and delete. -->
     <!-- TO DO:
             * storage for learning paths -->
-    <h3>Learning Paths:</h3>
+    <h3>Learning Paths: </h3>
     <?php 
         echo "Path Name: " . $objTest->__get('pathName') . "<br>";
         echo "Path Creator: " . $objTest->__get('pathCreator') . "<br>";
