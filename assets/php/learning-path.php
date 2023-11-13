@@ -78,7 +78,6 @@ ini_set('display_errors', 1);
         // echo "<pre>"; print_r($objTest); echo "<pre>";
 ?>
 
-<<<<<<< HEAD
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -102,7 +101,3 @@ ini_set('display_errors', 1);
         echo "<br>";
         echo "<pre>"; print_r($objTest); echo "<pre>";
     ?> 
-=======
->>>>>>> 78a588fd0d4a30a5178cc6158ad33ebd494e5425
-
-
