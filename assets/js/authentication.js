@@ -1,6 +1,6 @@
 const register = (firstName, lastName, email, password, confirmPass) => {
     const nameRegex = /^[a-zA-Z]*$/;
-    // const emailRegex = /^[a-z0-9]+@[a-z]*\.[a-z]*/
+    const emailRegex = /^[a-z0-9]+@[a-z]*\.[a-z]*/
     let error = false;
 
     const tempDate = new Date();
@@ -23,12 +23,12 @@ const register = (firstName, lastName, email, password, confirmPass) => {
 
         error = true;
     }
-    // if (!email.match(emailRegex)) {
-    //     document.getElementById("error-email").innerText = 
-    //     "PLEASE ENTER A VALID EMAIL";
+    if (!emailRegex.test(email)) {
+        document.getElementById("error-email").innerText = 
+        "PLEASE ENTER A VALID EMAIL";
 
-    //     error = true;
-    // }
+        error = true;
+    }
 
     if (password !== confirmPass) {
         document.getElementById("error-confirmpw").innerText = 
