@@ -3,6 +3,12 @@ const register = (firstName, lastName, email, password, confirmPass) => {
     // const emailRegex = /^[a-z0-9]+@[a-z]*\.[a-z]*/
     let error = false;
 
+    const tempDate = new Date();
+
+    // expires in 1 hour
+    const expiry = tempDate.getTime() + 1000 *36000 
+
+
     initializeErrorTags();
 
     if (!nameRegex.test(firstName) || firstName === "") {
@@ -35,11 +41,13 @@ const register = (firstName, lastName, email, password, confirmPass) => {
     if (error) return;
 
 
-    document.cookie = "firstName=" + firstName;
-    document.cookie = "lastName=" + lastName;
-    document.cookie = "email=" + email;
-    document.cookie = "password=" + password;
+    document.cookie = `firstName=${firstName}; expires=${expiry}; path=/`;
+    document.cookie = `lastName=${lastName}; expires=${expiry};  path=/`;
+    document.cookie = `email=${email}; expires=${expiry};  path=/`;
+    document.cookie = `password=${password}; expires=${expiry}; path=/`;
+
     console.log(document.cookie);
+
 
     const form = document.getElementById("register-form");
     form.setAttribute("method", "post")
