@@ -8,10 +8,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['path-name']) && isset($_COOKIE['firstName']) && isset($_POST['path-desc']) && isset($_POST['given-resources1'])) {
 
         // TODO
-        // Resource validation.
-        // Regex variable.
-        
-
         $pathName = $_POST['path-name'];
         $pathUser = $_COOKIE['firstName'];
         $pathDescription = $_POST['path-desc'];
@@ -29,8 +25,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Put these variables into a LearningPath object if they are set.
     $path = new LearningPath($pathName, $pathUser, $pathDescription, $pathResources);
 
+    echo "<pre>"; print_r($path); "<pre>";
+
     // Append this variable into a learning path storage file.
-    file_put_contents("LearningPaths.txt", var_export($path, true), FILE_APPEND);
+    //file_put_contents("LearningPaths.txt", var_export($path, true), FILE_APPEND);
 }
 
 ?>

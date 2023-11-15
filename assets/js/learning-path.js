@@ -31,7 +31,6 @@ document.getElementById("add-button").onclick = function() {
     }
 }
 
-
-
-
+// Ensuring valid resource url.
+const regEx = /^[a-z0-9]+\..[a-z]$/;
 
