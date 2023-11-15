@@ -2,6 +2,7 @@
 ini_set('display_errors', 1);
 
     class LearningPath {
+        // Path properties
         private $pathName;
         private $pathCreator;
         private $pathDescription;
@@ -30,35 +31,10 @@ ini_set('display_errors', 1);
         }
     }
 
-    // // Object for individual resources.
-    // class Resources {
-    //     private $resourceName;
-    //     private $resourceUrl;
-
-    //     public function __construct($name, $url)
-    //     {
-    //         $this->resourceName = $name;
-    //         $this->resourceUrl = $url;
-    //     }
-
-    //     // Getter
-    //     public function __get($property) {
-    //         if (property_exists($this, $property)) {
-    //             return $this->$property;
-    //         }
-    //     }
-    //     // Setter
-    //     public function __set($property, $value) {
-    //         if (property_exists($this, $property)) {
-    //             $this->$property = $value;
-    //         }
-    //     }
-    // }
-
     // Testing:
 
     $learningPaths = array (
-
+        
     );
 
 //     $resource = array(
