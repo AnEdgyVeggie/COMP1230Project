@@ -1,6 +1,7 @@
 const register = (firstName, lastName, email, password, confirmPass) => {
     const nameRegex = /^[a-zA-Z]*$/;
     const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z.-]+\.[a-z]*/
+
     let error = false;
 
     const tempDate = new Date();
@@ -29,6 +30,7 @@ const register = (firstName, lastName, email, password, confirmPass) => {
 
          error = true;
      }
+
 
     if (password !== confirmPass) {
         document.getElementById("error-confirmpw").innerText = 

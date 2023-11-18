@@ -8,7 +8,6 @@ document.getElementById("add-button").onclick = function() {
     const inputText = document.createElement("input");
     const br = document.createElement("br");
 
-
     // Make input type text.
     inputText.type = "text";
 
@@ -25,13 +24,9 @@ document.getElementById("add-button").onclick = function() {
             pathResources.appendChild(br);
         } else {
             pathResources.appendChild(inputText).setAttribute("id", ("given-resources" + resourceCount));
-            pathResources.appendChild(inputText).setAttribute("name", ("given-resources") + resourceCount);
+            pathResources.appendChild(inputText).setAttribute("name", ("given-resources" + resourceCount));
             pathResources.appendChild(br);
         }
-
-        // pathResources.appendChild(inputText).setAttribute("class", ("given-resources" + i));
-        // pathResources.appendChild(inputText).setAttribute("name", ("given-resources") + i);
-        // pathResources.appendChild(br);
         return resourceCount++;
     }
 }
