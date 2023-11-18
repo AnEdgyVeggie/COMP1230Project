@@ -1,3 +1,7 @@
+<?php
+include_once("../assets\php\databaseHandler.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +31,11 @@
         <label for="password">Password: </label>
         <input type="text" name="password" id="password">
 
+        <div class="error-message">
+            <p id="error" class="error"></p> 
+       </div>
+        
+        <button type="button" onclick="getFormValues('login')">LOG IN</button>
     </form>
-    <button  onclick="getFormValues('login')">LOG IN</button>
 </body>
 </html>
