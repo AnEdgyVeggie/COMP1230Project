@@ -1,6 +1,6 @@
 const register = (firstName, lastName, email, password, confirmPass) => {
     const nameRegex = /^[a-zA-Z]*$/;
-    const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z.-]+\.[a-z]*/
+    const emailRegex = /^[a-zA-Z0-9.-_]+@[a-zA-Z.-_]+\.[a-z]*/
 
     let error = false;
 
@@ -43,10 +43,11 @@ const register = (firstName, lastName, email, password, confirmPass) => {
     if (error) return;
 
 
-    document.cookie = `firstName=${firstName}; expires=${expiry}; path=../pages/loading/loadingScreen.php`;
-    document.cookie = `lastName=${lastName}; expires=${expiry};  path=/loading`;
-    document.cookie = `email=${email}; expires=${expiry};  path=/`;
-    document.cookie = `password=${password}; expires=${expiry}; path=/`;
+    document.cookie = `firstName=${firstName}; expires=${expiry}; path=/dashboard/projects/project/pages/loading`;
+    document.cookie = `lastName=${lastName}; expires=${expiry};  path=/dashboard/projects/project/pages/loading`;
+    document.cookie = `email=${email}; expires=${expiry};  path=/dashboard/projects/project/pages/loading`;
+    document.cookie = `password=${password}; expires=${expiry}; path=/dashboard/projects/project/pages/loading`;
+    document.cookie = `register=${password}; expires=${expiry / 36000}; path=/dashboard/projects/project/pages/loading`;
 
     console.log(document.cookie);
     location.href = "loading/loadingScreen.php"

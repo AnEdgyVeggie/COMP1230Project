@@ -5,8 +5,4 @@
     $dbName = "users";
 
     $connection = mysqli_connect($dbServerName, $dbUsername, $dbPassword);
-
-
-
-
 ?>
