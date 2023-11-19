@@ -1,17 +1,13 @@
 const register = (firstName, lastName, email, password, confirmPass) => {
     const nameRegex = /^[a-zA-Z]*$/;
-<<<<<<< HEAD
-    // const emailRegex = /^[a-z0-9]+@[a-z]*\.[a-z]*/
-    let error = false;
-=======
-    const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z.-]+\.[a-z]*/
+    const emailRegex = /^[a-zA-Z0-9.-_]+@[a-zA-Z.-_]+\.[a-z]*/
 
     let error = false;
 
-    const tempDate = new Date();
+    var expiry = new Date();
 
-    // expires in 1 hour
-    const expiry = tempDate.getTime() + 1000 *36000 
+    expiry.setTime(expiry.getTime()+30* 1000);
+    
 
 
     initializeErrorTags("register");
@@ -34,28 +30,7 @@ const register = (firstName, lastName, email, password, confirmPass) => {
 
          error = true;
      }
->>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
 
-    initializeErrorTags();
-
-    if (!nameRegex.test(firstName) || firstName === "") {
-        document.getElementById("error-fname").innerText = 
-        "FIRST NAMES SHOULD CONTAIN LETTERS ONLY";
-
-        error = true;
-    }
-    if (!nameRegex.test(lastName) || lastName === "") {
-        document.getElementById("error-lname").innerText = 
-        "LAST NAMES SHOULD CONTAIN LETTERS ONLY";
-
-        error = true;
-    }
-    // if (!email.match(emailRegex)) {
-    //     document.getElementById("error-email").innerText = 
-    //     "PLEASE ENTER A VALID EMAIL";
-
-    //     error = true;
-    // }
 
     if (password !== confirmPass) {
         document.getElementById("error-confirmpw").innerText = 
@@ -67,85 +42,36 @@ const register = (firstName, lastName, email, password, confirmPass) => {
     // returned too early, only the first error is displayed
     if (error) return;
 
-
-<<<<<<< HEAD
-    document.cookie = "firstName=" + firstName;
-    document.cookie = "lastName=" + lastName;
-    document.cookie = "email=" + email;
-    document.cookie = "password=" + password;
-=======
-    document.cookie = `firstName=${firstName}; expires=${expiry}; path=../pages/loading/loadingScreen.php`;
-    document.cookie = `lastName=${lastName}; expires=${expiry};  path=/loading`;
-    document.cookie = `email=${email}; expires=${expiry};  path=/`;
-    document.cookie = `password=${password}; expires=${expiry}; path=/`;
-
->>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
-    console.log(document.cookie);
-    location.href = "loading/loadingScreen.php"
+    // LOCALHOST
+    document.cookie = `firstName=${firstName}; expires=${expiry.toUTCString}; path=/dashboard/projects/project/pages/loading`;
+    document.cookie = `lastName=${lastName}; expires=${expiry.toUTCString};  path=/dashboard/projects/project/pages/loading`;
+    document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/dashboard/projects/project/pages/loading`;
+    document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/dashboard/projects/project/pages/loading`;
 
 
-    const form = document.getElementById("register-form");
-    form.setAttribute("method", "post")
+    // SERVERSIDE
+    // document.cookie = `firstName=${firstName}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `lastName=${lastName}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `register=true; expires=${expiry.toLocaleTimeString};path=/comp1230/assignments/project/pages/loading`;
+
+    window.location.href = "loading/loadingScreen.php?register=true"
 }
 
 const login = (email, password) => {
-<<<<<<< HEAD
-    let cookieMap = new Map();
-
-=======
     
     initializeErrorTags("login");
 
-    const tempDate = new Date();
+    var expiry = new Date();
 
-    // expires in 1 hour
-    const expiry = tempDate.getTime() + 1000 *36000 
+    expiry.setTime(expiry.getTime()+30* 1000);
 
-    let cookieMap = new Map();
+    document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/dashboard/projects/project/pages/learning-path.html`;
+    document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/dashboard/projects/project/pages/loading`;
 
-    let usernameMatch = false, passwordMatch = false;
->>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
-    // convert JS cookies to an array [firstname=name, lastname=name] etc
-    // and trims the whitespace
-    let cookieArray = document.cookie.split(";");
-    for (let i = 0; i < cookieArray.length; i++) {
-        cookieArray[i] = cookieArray[i].trimStart();
-    }
+    location.href = 'loading/loadingscreen.php';
 
-    // converts each array element into a key/value and stores in a map
-    cookieArray.forEach(element => {
-        let newElement = element.split("=");
-<<<<<<< HEAD
-        console.log(newElement)
-        cookieMap.set(newElement[0], newElement[1])
-    });
-
-    if (email === cookieMap.get("email")) {
-=======
-
-        cookieMap.set(newElement[0], newElement[1])
-    });
-
-    if (email.toLowerCase() === cookieMap.get("email")) {
-        usernameMatch = true;
->>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
-        console.log("Email match");
-    }
-    if (password === cookieMap.get("password")) {
-        console.log("Password match")
-<<<<<<< HEAD
-=======
-        passwordMatch = true;
-    } 
-    
-    if (usernameMatch && passwordMatch) {
-        document.cookie = `loggedIn=true; expires=${expiry}; path=/`
-        location.href = '../index.php'
-    } else {
-        const error = document.getElementById("error").innerHTML = 
-        "ERROR: Username or password is incorrect. Try again."
->>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
-    }
 }
 
 const getFormValues = selector => {
@@ -186,21 +112,6 @@ const getFormValues = selector => {
 
 // used to initialize errors as empty strings. This is for 
 // 'per-line' errors 
-<<<<<<< HEAD
-const initializeErrorTags = () => {
-    const firstname = document.getElementById("error-fname");
-    const lastname = document.getElementById("error-lname");
-    const email = document.getElementById("error-email");
-    const password = document.getElementById("error-password");
-    const confirmpw = document.getElementById("error-confirmpw");
-
-    firstname.innerHTML = "";
-    lastname.innerHTML = "";
-    email.innerHTML = "";
-    password.innerHTML = "";
-    confirmpw.innerHTML = "";
-}
-=======
 const initializeErrorTags = selector => {
     switch (selector) {
 
@@ -224,5 +135,5 @@ const initializeErrorTags = selector => {
         break;
     }
 
+
 }
->>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0

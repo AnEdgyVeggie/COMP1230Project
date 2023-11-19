@@ -15,11 +15,12 @@ include_once("../assets\php\databaseHandler.php");
     <header>
         <nav>
             <span>
-                <a href="../index.html">Home</a>
+                <a href="learning-path.html">Learning Path HTML</a>|
+                <a href="../index.php">Home</a>
             </span>
             <span id="login">
                 <a href="">Register</a>|
-                <a href="login.html">Login</a>
+                <a href="login.php">Login</a>
             </span>
         </nav>        
     </header>
@@ -32,28 +33,6 @@ include_once("../assets\php\databaseHandler.php");
              <p id="error-fname" class="error"></p> 
         </div>
 
-<<<<<<< HEAD
-    <form >
-        <div class="fields">
-            <label for="firstname">First Name: </label>
-            <input type="text" name="firstname" id="firstname">
-        </div>
-        <div class="error-message">
-             <p id="error-fname" class="error"></p> 
-        </div>
-
-        <div class="fields">
-            <label for="lastname">Last Name: </label>
-            <input type="text" name="lastname" id="lastname">
-        </div>
-        <div class="error-message">
-            <p id="error-lname" class="error"></p> 
-        </div>
-
-        <div class="fields">
-            <label for="email">Email Address: </label>
-            <input type="text" name="email" id="email">
-=======
         <div class="fields">
             <label for="lastname">Last Name: </label>
             <input type="text" name="lastname" id="lastname" placeholder="Last Name">
@@ -65,28 +44,10 @@ include_once("../assets\php\databaseHandler.php");
         <div class="fields">
             <label for="email">Email Address: </label>
             <input type="text" name="email" id="email" placeholder="JohnDoe@example.com">
->>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
         </div>
         <div class="error-message">
             <p id="error-email" class="error"></p>
         </div>
-<<<<<<< HEAD
-
-        <div class="fields">          
-            <label for="password">Password: </label>
-            <input type="password" name="password" id="password">
-        </div>
-        <div class="error-message">
-            <p id="error-password" class="error"></p>
-        </div>
-
-        <div class="fields">
-            <label for="confirm_password">Confirm Password: </label>
-            <input type="password" name="confirm_password" id="confirm_password">
-        </div>
-        <div class="error-message">
-            <p id="error-confirmpw" class="error"></p>
-=======
 
         <div class="fields">          
             <label for="password">Password: </label>
@@ -94,7 +55,6 @@ include_once("../assets\php\databaseHandler.php");
         </div>
         <div class="error-message">
             <p id="error-password" class="error"></p>
->>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
         </div>
 
         <div class="fields">
