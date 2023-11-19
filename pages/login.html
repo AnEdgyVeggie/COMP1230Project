@@ -1,3 +1,7 @@
+<?php
+include_once("../assets\php\databaseHandler.php");
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,22 +9,20 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
     <script src="../assets/js/authentication.js" defer></script>
-    <title>Register For Learning Paths</title>
+    <title>Login to Learning Paths</title>
 </head>
 <body>
     <header>
         <nav>
             <span>
-                Learning Paths
+                <a href="../index.html">Home</a>
             </span>
             <span id="login">
-                <a href="register.html">Register</a>
-                /
-                <a href="login.html">Login</a>
+                <a href="register.html">Register</a>|
+                <a href="">Login</a>
             </span>
         </nav>        
     </header>
-
     <form >
         <label for="email">Email Address: </label>
         <input type="text" name="email" id="email">
@@ -28,7 +30,11 @@
         <label for="password">Password: </label>
         <input type="text" name="password" id="password">
 
+        <div class="error-message">
+            <p id="error" class="error"></p> 
+       </div>
+        
+        <button type="button" onclick="getFormValues('login')">LOG IN</button>
     </form>
-    <button  onclick="getFormValues('login')">REGISTER</button>
 </body>
 </html>

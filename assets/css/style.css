@@ -2,10 +2,12 @@ body {
     background-color: rgb(24, 1, 1);
     flex-direction: column;
     display: flex;
-    
-    justify-content: center;
     align-items: center;
-    height: 99vh
+    height: 98vh;
+    width: 99vw;
+}
+header {
+    width: 80%;
 }
 
 nav {
@@ -13,6 +15,7 @@ nav {
     justify-content: space-between;
     width: 100%;
     padding: 40px 20px;
+    margin: 30px;
     color: white;
     border-bottom: 2px solid white;
 }
@@ -24,6 +27,11 @@ label {
     color: white;
 }
 
+a {
+    padding: 0 20px;
+    text-decoration: none;
+}
+
 form {
     display: grid;
     gap: 20px;
@@ -31,6 +39,7 @@ form {
     font-size: 20px;
     border: 3px solid white;
     padding: 50px;
+<<<<<<< HEAD
 
 }
 .fields {
@@ -43,8 +52,15 @@ form {
     height:30px;
     font-size: 14px;
     text-align: center;
+=======
+>>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
 
 }
+.fields {
+    display: grid;
+    grid-template-columns: 200px 300px;
+}
+
 input {
     height: 25px;
 
@@ -52,8 +68,23 @@ input {
 button {
     width: 100px;
     height: 25px;
+<<<<<<< HEAD
 }
 .error {
     color: blue
 
+=======
+    margin: 30px;
+}
+.error {
+    color: blue;
+    margin-top: -10px;
+    height:15px;
+    font-size: 14px;
+    text-align: center;
+}
+
+p {
+    color: white;
+>>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
 }
