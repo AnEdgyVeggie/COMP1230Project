@@ -15,8 +15,12 @@ include_once("../assets\php\databaseHandler.php");
     <header>
         <nav>
             <span>
+<<<<<<< HEAD:pages/register.php
                 <a href="learning-path.html">Learning Path HTML</a>|
                 <a href="../index.php">Home</a>
+=======
+                <a href="../index.html">Home</a>
+>>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0:pages/register.html
             </span>
             <span id="login">
                 <a href="">Register</a>|

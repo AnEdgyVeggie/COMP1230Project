@@ -13,12 +13,17 @@ include_once("assets/php/databaseHandler.php");
     <header>
         <nav>
             <span>
+<<<<<<< HEAD:index.php
 <<<<<<< HEAD:index.html
                 <a href="pages/createPath.html">Create a Learning Path</a>|
                 <a href="pages/learningPaths.php">View Learning Paths</a>
 =======
                 <a href="pages/learning-path.html">Learning Path HTML</a>|
 >>>>>>> 4860f6b19bd1b203151a7534047a37383004ba0e:index.php
+=======
+                <a href="pages/createPath.html">Create a Learning Path</a>|
+                <a href="pages/learningPaths.php">View Learning Paths</a>
+>>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0:index.html
                 <a href="">Home</a>
             </span>
 
