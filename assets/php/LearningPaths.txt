@@ -1,0 +1,9 @@
+LearningPath::__set_state(array(
+   'pathName' => 'Test',
+   'pathCreator' => 'Jay',
+   'pathDescription' => 'Testing',
+   'pathResources' => 
+  array (
+    0 => 'Test',
+  ),
+))

@@ -31,12 +31,6 @@ ini_set('display_errors', 1);
         }
     }
 
-    // Testing:
-
-    $learningPaths = array (
-        
-    );
-
 //     $resource = array(
 //         'Resource 1' => new Resources('Test', 'www.test.com'),
 //         'Resource 2' => new Resources('Test2', 'www.test2.com')
@@ -53,3 +47,22 @@ ini_set('display_errors', 1);
         // echo "<br>";
         // echo "<pre>"; print_r($objTest); echo "<pre>";
 ?>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Learning Paths</h1>
+    <?php 
+        // Add existing learning paths to a variable.
+        $paths = file_get_contents("LearningPaths.txt");
+        
+        
+    
+    ?>
+</body>
+</html>
