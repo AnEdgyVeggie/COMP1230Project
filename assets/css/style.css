@@ -23,7 +23,7 @@ a {
     color: white;
 
 }
-label {
+label, span {
     color: white;
 }
 
@@ -48,7 +48,6 @@ form {
 
 input {
     height: 25px;
-
 }
 button {
     width: 100px;

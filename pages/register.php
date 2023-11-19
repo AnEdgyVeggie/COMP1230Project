@@ -16,11 +16,11 @@ include_once("../assets\php\databaseHandler.php");
         <nav>
             <span>
                 <a href="learning-path.html">Learning Path HTML</a>|
-                <a href="../index.html">Home</a>
+                <a href="../index.php">Home</a>
             </span>
             <span id="login">
                 <a href="">Register</a>|
-                <a href="login.html">Login</a>
+                <a href="login.php">Login</a>
             </span>
         </nav>        
     </header>

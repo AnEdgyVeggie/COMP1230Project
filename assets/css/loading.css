@@ -6,7 +6,7 @@ body {
     flex-direction: column;
     height: 95vh;
 }
-h1 {
+h1, p {
     color: white;
 }
 #d5, #d3, #d1 {

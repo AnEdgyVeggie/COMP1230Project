@@ -18,19 +18,12 @@ include_once("assets/php/databaseHandler.php");
             </span>
 
             <span id="login">
-                <a href="pages/register.html">Register</a>
+                <a href="pages/register.php">Register</a>
                 |
-                <a href="pages/login.html">Login</a>
+                <a href="pages/login.php">Login</a>
             </span>
         </nav>        
     </header>
-    <p>
-    <?php
-    if (isset($_COOKIE["firstName"])) 
-    {
-        
-        echo $_COOKIE["firstName"];
-    }
-    ?></p>
+
 </body>
 </html>
