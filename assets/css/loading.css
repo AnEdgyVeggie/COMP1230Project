@@ -6,11 +6,9 @@ body {
     flex-direction: column;
     height: 95vh;
 }
-<<<<<<< HEAD
-h1 {
-=======
+
 h1, p {
->>>>>>> 4860f6b19bd1b203151a7534047a37383004ba0e
+
     color: white;
 }
 #d5, #d3, #d1 {

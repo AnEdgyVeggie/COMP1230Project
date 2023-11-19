@@ -39,33 +39,28 @@ form {
     font-size: 20px;
     border: 3px solid white;
     padding: 50px;
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
->>>>>>> 4860f6b19bd1b203151a7534047a37383004ba0e
+
 
 }
 .fields {
     display: grid;
     grid-template-columns: 200px 300px;
 }
-<<<<<<< HEAD
+
 .error-message {
     margin-top: -20px;
     margin-bottom: 10px;;
     height:30px;
     font-size: 14px;
     text-align: center;
-=======
->>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
+
 
 }
 .fields {
     display: grid;
     grid-template-columns: 200px 300px;
 }
-=======
->>>>>>> 4860f6b19bd1b203151a7534047a37383004ba0e
+
 
 input {
     height: 25px;
@@ -74,15 +69,9 @@ input {
 button {
     width: 100px;
     height: 25px;
-<<<<<<< HEAD
-<<<<<<< HEAD
 }
 .error {
-    color: blue
-
-=======
-=======
->>>>>>> 4860f6b19bd1b203151a7534047a37383004ba0e
+    color: blue;
     margin: 30px;
 }
 .error {
@@ -95,8 +84,4 @@ button {
 
 p {
     color: white;
-<<<<<<< HEAD
->>>>>>> d6ac8411d6e728d4ae35768fb1d84da1da1901d0
-=======
->>>>>>> 4860f6b19bd1b203151a7534047a37383004ba0e
 }
