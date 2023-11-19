@@ -1,13 +1,13 @@
 const register = (firstName, lastName, email, password, confirmPass) => {
     const nameRegex = /^[a-zA-Z]*$/;
-    const emailRegex = /^[a-zA-Z0-9]+@[a-zA-Z.-]+\.[a-z]*/
+    const emailRegex = /^[a-zA-Z0-9.-_]+@[a-zA-Z.-_]+\.[a-z]*/
 
     let error = false;
 
-    const tempDate = new Date();
+    var expiry = new Date();
 
-    // expires in 1 hour
-    const expiry = tempDate.getTime() + 1000 *36000 
+    expiry.setTime(expiry.getTime()+30* 1000);
+    
 
 
     initializeErrorTags("register");
@@ -42,62 +42,36 @@ const register = (firstName, lastName, email, password, confirmPass) => {
     // returned too early, only the first error is displayed
     if (error) return;
 
-
-    document.cookie = `firstName=${firstName}; expires=${expiry}; path=../pages/loading/loadingScreen.php`;
-    document.cookie = `lastName=${lastName}; expires=${expiry};  path=/loading`;
-    document.cookie = `email=${email}; expires=${expiry};  path=/`;
-    document.cookie = `password=${password}; expires=${expiry}; path=/`;
-
-    console.log(document.cookie);
-    location.href = "loading/loadingScreen.php"
+    // LOCALHOST
+    document.cookie = `firstName=${firstName}; expires=${expiry.toUTCString}; path=/dashboard/projects/project/pages/loading`;
+    document.cookie = `lastName=${lastName}; expires=${expiry.toUTCString};  path=/dashboard/projects/project/pages/loading`;
+    document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/dashboard/projects/project/pages/loading`;
+    document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/dashboard/projects/project/pages/loading`;
 
 
-    const form = document.getElementById("register-form");
-    form.setAttribute("method", "post")
+    // SERVERSIDE
+    // document.cookie = `firstName=${firstName}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `lastName=${lastName}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `register=true; expires=${expiry.toLocaleTimeString};path=/comp1230/assignments/project/pages/loading`;
+
+    window.location.href = "loading/loadingScreen.php?register=true"
 }
 
 const login = (email, password) => {
     
     initializeErrorTags("login");
 
-    const tempDate = new Date();
+    var expiry = new Date();
 
-    // expires in 1 hour
-    const expiry = tempDate.getTime() + 1000 *36000 
+    expiry.setTime(expiry.getTime()+30* 1000);
 
-    let cookieMap = new Map();
+    document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/dashboard/projects/project/pages/learning-path.html`;
+    document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/dashboard/projects/project/pages/loading`;
 
-    let usernameMatch = false, passwordMatch = false;
-    // convert JS cookies to an array [firstname=name, lastname=name] etc
-    // and trims the whitespace
-    let cookieArray = document.cookie.split(";");
-    for (let i = 0; i < cookieArray.length; i++) {
-        cookieArray[i] = cookieArray[i].trimStart();
-    }
+    location.href = 'loading/loadingscreen.php';
 
-    // converts each array element into a key/value and stores in a map
-    cookieArray.forEach(element => {
-        let newElement = element.split("=");
-
-        cookieMap.set(newElement[0], newElement[1])
-    });
-
-    if (email.toLowerCase() === cookieMap.get("email")) {
-        usernameMatch = true;
-        console.log("Email match");
-    }
-    if (password === cookieMap.get("password")) {
-        console.log("Password match")
-        passwordMatch = true;
-    } 
-    
-    if (usernameMatch && passwordMatch) {
-        document.cookie = `loggedIn=true; expires=${expiry}; path=/`
-        location.href = '../index.php'
-    } else {
-        const error = document.getElementById("error").innerHTML = 
-        "ERROR: Username or password is incorrect. Try again."
-    }
 }
 
 const getFormValues = selector => {
@@ -161,4 +135,16 @@ const initializeErrorTags = selector => {
         break;
     }
 
+
+    // const setLogin = () => {
+    //     const tempDate = new Date();
+
+    //     // expires in 1 hour
+    //     const expiry = tempDate.setTime() + 1000 *36000 
+        
+    //     document.cookie = `loggedIn="true"; expires=${expiry}; path=/dashboard/projects/project/pages/login.html`;
+    // }
+    // const unsetRegister = () => {
+    //     document.cookie = `register=; expires=${tempDate - 3600}; path=/dashboard/projects/project/pages/loading`;
+    // }
 }

@@ -1,5 +1,6 @@
 <?php
 include_once("../assets\php\databaseHandler.php");
+
 ?>
 
 <!DOCTYPE html>
@@ -11,19 +12,24 @@ include_once("../assets\php\databaseHandler.php");
     <script src="../assets/js/authentication.js" defer></script>
     <title>Login to Learning Paths</title>
 </head>
-<body>
+<body >
     <header>
         <nav>
             <span>
                 <a href="learning-path.html">Learning Path HTML</a>|
-                <a href="../index.html">Home</a>
+                <a href="../index.php">Home</a>
             </span>
             <span id="login">
-                <a href="register.html">Register</a>|
+                <a href="register.php">Register</a>|
                 <a href="">Login</a>
             </span>
         </nav>        
     </header>
+    <?php
+        if (!empty($_GET)) {
+            echo '<span>Registration Complete! Please login with your credentials</span>';
+        }
+    ?>
     <form >
         <label for="email">Email Address: </label>
         <input type="text" name="email" id="email">
