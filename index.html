@@ -1,3 +1,6 @@
+<?php
+include_once("assets/php/databaseHandler.php");
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -23,8 +26,11 @@
     </header>
     <p>
     <?php
-    echo $_COOKIE["firstName"];
-
+    if (isset($_COOKIE["firstName"])) 
+    {
+        
+        echo $_COOKIE["firstName"];
+    }
     ?></p>
 </body>
 </html>

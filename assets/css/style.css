@@ -45,14 +45,7 @@ form {
     display: grid;
     grid-template-columns: 200px 300px;
 }
-.error-message {
-    margin-top: -20px;
-    margin-bottom: 10px;;
-    height:30px;
-    font-size: 14px;
-    text-align: center;
 
-}
 input {
     height: 25px;
 
@@ -63,7 +56,11 @@ button {
     margin: 30px;
 }
 .error {
-    color: blue
+    color: blue;
+    margin-top: -10px;
+    height:15px;
+    font-size: 14px;
+    text-align: center;
 }
 
 p {
