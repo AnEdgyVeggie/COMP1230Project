@@ -2,7 +2,6 @@
     // if there is a query string in the URL (?loggedin=true), it will set 2 cookies for the entire site:
     // The users email, and a loggedIn=true, which will be used to keep the site facing a logged in user
     if (!empty($_GET)) {
-        setcookie("email", $_COOKIE['email'], time() + 3600, '/');
         setcookie("loggedIn", true, time() + 3600, '/');
     }
 
