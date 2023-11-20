@@ -12,18 +12,37 @@ include_once("../assets\php\databaseHandler.php");
     <title>Register For Learning Paths</title>
 </head>
 <body>
-    <header>
-        <nav>
-            <span>
-                <a href="learning-path.html">Learning Path HTML</a>|
-                <a href="../index.php">Home</a>
-            </span>
-            <span id="login">
-                <a href="">Register</a>|
-                <a href="login.php">Login</a>
-            </span>
-        </nav>        
-    </header>
+<?php
+if (isset($_COOKIE['loggedIn'])) {
+
+   echo  '<header>
+            <nav>
+                <span>
+                    <a href="learningPaths.php">Learning Path HTML</a>|
+                    <a href="../index.php">Home</a>
+                </span>
+                <span id="login">
+                    <a onclick="logout();" href="" >Logout</a>
+                </span>
+            </nav>        
+        </header>';
+
+} else {
+    echo '<header>
+    <nav>
+        <span>
+            <a href="learningPaths.php">Learning Path HTML</a>|
+            <a href="../index.php">Home</a>
+        </span>
+        <span id="login">
+            <a href="">Register</a>|
+            <a href="login.php">Login</a>
+        </span>
+    </nav>        
+  </header>';
+}
+
+?>
     <form id="register-form">
         <div class="fields">
             <label for="firstname">First Name: </label>
@@ -69,5 +88,11 @@ include_once("../assets\php\databaseHandler.php");
     </form>
 
 
+    <script>
+    const logout = () => {
+        console.log("HELLO THERE")
+        document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+    </script>
 </body>
 </html>

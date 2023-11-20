@@ -67,7 +67,7 @@ const login = (email, password) => {
 
     expiry.setTime(expiry.getTime()+30* 1000);
 
-    document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/dashboard/projects/project/pages/learning-path.html`;
+    document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/dashboard/projects/project/pages/learningPaths.php`;
     document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/dashboard/projects/project/pages/loading`;
 
     location.href = 'loading/loadingscreen.php';
@@ -114,8 +114,6 @@ const getFormValues = selector => {
 // 'per-line' errors 
 const initializeErrorTags = selector => {
     switch (selector) {
-
-    
     case "register":
         const firstname = document.getElementById("error-fname");
         const lastname = document.getElementById("error-lname");
@@ -134,6 +132,5 @@ const initializeErrorTags = selector => {
         error.innerHTML = "";
         break;
     }
-
 
 }
