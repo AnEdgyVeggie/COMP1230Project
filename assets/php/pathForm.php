@@ -11,7 +11,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if (isset($_POST['path_name']) && isset($_POST['path_desc']) && isset($_POST['given_resources1'])) {
         // Pull values from the form.
         $pathName = $_POST['path_name'];
-        //$pathUser = $loadingFName;
         $pathDescription = $_POST['path_desc'];
         $pathResources = array();
 
@@ -131,15 +130,26 @@ function showResources($pathId) {
         $givenPathDesc = $row['path_desc'];
     }
 
+    // Page layout.
+    echo "
+        <div class='pathsGridItems'>
+            <h3>$givenPathName</h3> <br>
+            Created by: $givenUserName <br>
+            $givenPathDesc <br>
+            <h3>Resources</h3> <br>
 
-    echo "<h3>Path Name:</h3> $givenPathName <br>";
-    echo "<h3>Path User:</h3> $givenUserName <br>";
-    echo "<h3>Path Description:</h3> $givenPathDesc <br>";
-    echo "<h3>Resources:</h3><br>";
-    // Cycle through each resource.
-    for ($i = 0; $i < count($resourceArray); $i++) {
-        echo "$resourceArray[$i] <br>";
-    }
+    ";
+        for ($i = 0; $i < count($resourceArray); $i++) {
+            echo "$resourceArray[$i] <br>";
+        }
+        
+    echo "
+        <br>
+        <span>
+            <a href=''>Clone</a>|
+            <a href='' class='delete_path'>Delete</a>
+        </span>
+    </div>";
 }
 // Delete path function.
 function deletePath($pathId, $resourceId) {
@@ -159,31 +169,18 @@ function deletePath($pathId, $resourceId) {
         mysqli_query($conn, $sqlDeleteResources);
 }
 
-// Learning path class/object.
-// class LearningPath {
-//     // Path properties
-//     private $pathName;
-//     private $pathCreator;
-//     private $pathDescription;
+function getPathAmounts() {
+            // DB info.
+            $dbServername = "localhost";
+            $dbUsername = "root";
+            $dbPassword = "";
+            $dbName = "learning_paths";
+            // Connection info.
+            $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
-//     // Constructor
-//     public function __construct($name, $creator, $desc)
-//     {
-//         $this->pathName = $name;
-//         $this->pathCreator = $creator;
-//         $this->pathDescription = $desc;
-//     }
-
-//     // Getter
-//     public function __get($property) {
-//         if (property_exists($this, $property)) {
-//             return $this->$property;
-//         }
-//     }
-//     // Setter
-//     public function __set($property, $value) {
-//         if (property_exists($this, $property)) {
-//             $this->$property = $value;
-//         }
-//     }
-// }
+            // Sql query.
+            $sqlCount = "SELECT COUNT(path_id) as total FROM paths;";
+            $result = mysqli_query($conn, $sqlCount);
+            $count = mysqli_fetch_assoc($result);
+            return $count;
+}

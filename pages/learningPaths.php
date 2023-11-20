@@ -15,6 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
+    <script src="../assets/js/learning-path.js" defer></script>
     <title>Learning Paths</title>
 </head>
 <body>
@@ -25,7 +26,8 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
    echo  '<header>
             <nav>
                 <span>
-                    <a href="">Learning Path HTML</a>|
+                    <a href="learningPaths.php">Learning Paths</a>|
+                    <a href="createPath.php">Create a Learning Path</a>|
                     <a href="../index.php">Home</a>
                 </span>
                 <span id="login">
@@ -50,25 +52,17 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
 }
 
 ?>
-
-
-
-
     <h1>Learning Paths</h1>
-
-    <?php
-
-        // for loop to loop through as many paths as is in the database maybe
-
-        // showResources(1);
-        // option to delete databases, click button, proper id input into function
-
-        // showResources(1);
-
-        // The above line is commented because without your database, the code was erroring, and therefor
-        // the script tag below was not being called. For some reason I had to put the script in, because the 
-        // JS file was not being imported for this specific function
-    ?>
+    <div id="pathsGrid">
+        <?php
+            // for loop to loop through as many paths as is in the database maybe
+            for ($i = 0; $i < getPathAmounts()['total']; $i++) {
+                showResources($i + 1);
+            }
+            
+            // option to delete databases, click button, proper id input into function
+        ?>
+    </div>
 
 <script>
     const logout = () => {
@@ -78,6 +72,5 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
         document.cookie = "email=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     }
     </script>
-
 </body>
 </html>
