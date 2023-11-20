@@ -11,12 +11,12 @@
     <header>
         <nav>
             <span>
-                <a href="learningPath.html">Learning Paths</a>|
-                <a href="../index.html">Home</a>
+                <a href="learningPaths.php">Learning Paths</a>|
+                <a href="../index.php">Home</a>
             </span>
             <span id="login">
-                <a href="register.html">Register</a>|
-                <a href="login.html">Login</a>
+                <a href="register.php">Register</a>|
+                <a href="login.php">Login</a>
             </span>
         </nav>     
         </nav>        
