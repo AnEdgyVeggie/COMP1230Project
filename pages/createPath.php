@@ -8,20 +8,38 @@
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
-    <header>
-        <nav>
-            <span>
-                <a href="learningPaths.php">Learning Paths</a>|
-                <a href="../index.php">Home</a>
-            </span>
-            <span id="login">
-                <a href="register.php">Register</a>|
-                <a href="login.php">Login</a>
-            </span>
-        </nav>     
-        </nav>        
-    </header>
 
+    <?php
+        if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
+
+            echo  '<header>
+                    <nav>
+                        <span>
+                            <a href="learningPaths.php">Learning Paths</a>|
+                            <a href="createPath.php">Create a Learning Path</a>|
+                            <a href="../index.php">Home</a>
+                        </span>
+                        <span id="login">
+                            <a onclick="logout();">Logout</a>
+                        </span>
+                    </nav>        
+                </header>';
+        
+        } else {
+            echo '<header>
+            <nav>
+                <span>
+                    <a href="learningPaths.php">Learning Path HTML</a>|
+                    <a href="../index.php">Home</a>
+                </span>
+                <span id="login">
+                    <a href="register.php">Register</a>|
+                    <a href="login.php">Login</a>
+                </span>
+            </nav>        
+        </header>';
+        }
+    ?>
 
     <p>Create a Learning Path</p>
     <br>

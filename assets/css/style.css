@@ -100,3 +100,15 @@ article {
     max-width: 900px;
     padding: 40px;
 }
+
+#pathsGrid {
+    display: grid;
+    grid-template-columns: 500px 500px 500px;
+    gap: 10px;
+    padding: 5px;
+}
+.pathsGridItems {
+    display: grid;
+    border: 2px solid white;
+    padding: 10px;
+}
