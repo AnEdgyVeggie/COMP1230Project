@@ -141,6 +141,24 @@ function showResources($pathId) {
         echo "$resourceArray[$i] <br>";
     }
 }
+// Delete path function.
+function deletePath($pathId, $resourceId) {
+        // DB info.
+        $dbServername = "localhost";
+        $dbUsername = "root";
+        $dbPassword = "";
+        $dbName = "learning_paths";
+        // Connection info.
+        $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+
+        // Sql queries.
+        $sqlDeletePath = "DELETE FROM paths WHERE path_id = $pathId;";
+        $sqlDeleteResources = "DELETE FROM resources WHERE resource_id = $resourceId;";
+
+        mysqli_query($conn, $sqlDeletePath);
+        mysqli_query($conn, $sqlDeleteResources);
+}
+
 // Learning path class/object.
 // class LearningPath {
 //     // Path properties

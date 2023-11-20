@@ -16,6 +16,7 @@
 
         // for loop to loop through as many paths as is in the database maybe
         showResources(1);
+        // option to delete databases, click button, proper id input into function
     ?>
 
 </body>
