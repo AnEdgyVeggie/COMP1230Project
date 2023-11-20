@@ -119,14 +119,20 @@ function showResources($pathId) {
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
     // Queries.
-    $sqlSelectPaths = "SELECT * FROM paths p 
-                       JOIN resources r ON p.resources_id = r.resource_id
-                       WHERE p.path_id = $pathId";
+    $sqlSelectPaths =  "SELECT * FROM paths p 
+                        JOIN resources r 
+                        ON p.resources_id = r.resource_id
+                        JOIN users u
+                        ON u.id = p.user_id
+                        WHERE p.path_id = $pathId";
+                       
 
     $selectPathsResult = mysqli_query($conn, $sqlSelectPaths);
 
     // Go through each row, split resources, grab path info.
     while ($row = mysqli_fetch_assoc($selectPathsResult)) {
+        // echo print_r($row);
+
         // Split resources.
         $resourceString = $row['resource_list'];
         $resourceArray = explode(',', $resourceString);
@@ -135,7 +141,7 @@ function showResources($pathId) {
         $givenPathName = $row['path_name'];
 
         // User name.
-        $givenUserName = "Jay";
+        $givenUserName = $row['emailAddress'];
 
         // Path description.
         $givenPathDesc = $row['path_desc'];
@@ -145,13 +151,13 @@ function showResources($pathId) {
     echo "
         <div class='pathsGridItems'>
             <h3>$givenPathName</h3> <br>
-            Created by: $givenUserName <br>
-            $givenPathDesc <br>
+            <span>Created by: $givenUserName <br>
+            $givenPathDesc <br></span>
             <h3>Resources</h3> <br>
 
     ";
         for ($i = 0; $i < count($resourceArray); $i++) {
-            echo "$resourceArray[$i] <br>";
+            echo "<p>" . $resourceArray[$i] .  "</p><br>";
         }
         
     echo "
@@ -181,12 +187,15 @@ function deletePath($pathId, $resourceId) {
 }
 
 function getPathAmounts() {
-            // DB info.
-            $dbServername = "localhost";
-            $dbUsername = "root";
-            $dbPassword = "";
-            $dbName = "learning_paths";
-            // Connection info.
+    $dbServername = "localhost";
+    $dbUsername = "root";
+    $dbPassword = "";
+
+    // Ethan's database
+    $dbName = "project";
+    // Jay's database
+    // $dbName = "learning_paths";
+
             $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
             // Sql query.
