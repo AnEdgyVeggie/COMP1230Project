@@ -59,7 +59,7 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
     <?php
 
         // for loop to loop through as many paths as is in the database maybe
-        // showResources(1);
+        showResources(1);
 
         // The above line is commented because without your database, the code was erroring, and therefor
         // the script tag below was not being called. For some reason I had to put the script in, because the 
