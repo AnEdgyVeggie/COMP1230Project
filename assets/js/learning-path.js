@@ -33,11 +33,3 @@ document.getElementById("add-button").onclick = function() {
 
 // Ensuring valid resource url.
 const regEx = /^[a-z0-9]+\..[a-z]$/;
-
-// Confirmation for path deletion.
-document.getElementsByClassName('delete_path').onclick = function() {
-    alert("WARNING: You cannot undo the deletion of a learning path.\n" +
-            "Are you sure you'd like to delete this path?");
-}
-
-

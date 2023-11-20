@@ -112,3 +112,14 @@ article {
     border: 2px solid white;
     padding: 10px;
 }
+.pathsGridItems > p {
+    margin: 2px;
+}
+.deleteSubmit {
+    width: 100px;
+    height: 25px;
+    border: none;
+}
+.deletePath {
+    all: initial;
+}

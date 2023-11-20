@@ -1,6 +1,7 @@
 <?php
+//include_once('databaseHandler.php');
 // Protects page from unwanted HTML code injections.
-echo htmlspecialchars($_SERVER['PHP_SELF']);
+htmlspecialchars($_SERVER['PHP_SELF']);
 
 // Set variables to global.
 global $pathName, $pathUser, $pathDescription, $pathResources;
@@ -24,10 +25,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Place variables into learning path object.
-    // $paths = array();
-    // array_push($paths, new LearningPath($pathName, 'Jay', $pathDescription));
-
     // Function to place resources in DB.
     pushResources($pathUser, $pathName, $pathDescription, $pathResources);
 }
@@ -40,9 +37,9 @@ function pushResources($pathUser, $pathName, $pathDescription, $pathResources) {
     $dbPassword = "";
 
     // Ethan's database
-    $dbName = "project";
+    //$dbName = "project";
     // Jay's database
-    // $dbName = "learning_paths";
+    $dbName = "learning_paths";
 
     // Connection info.
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
@@ -110,9 +107,9 @@ function showResources($pathId) {
     $dbPassword = "";
 
     // Ethan's database
-    $dbName = "project";
+    //$dbName = "project";
     // Jay's database
-    // $dbName = "learning_paths";
+    $dbName = "learning_paths";
 
 
     // Connection info.
@@ -124,7 +121,7 @@ function showResources($pathId) {
                         ON p.resources_id = r.resource_id
                         JOIN users u
                         ON u.id = p.user_id
-                        WHERE p.path_id = $pathId";
+                        WHERE p.path_id = $pathId;";
                        
 
     $selectPathsResult = mysqli_query($conn, $sqlSelectPaths);
@@ -160,13 +157,7 @@ function showResources($pathId) {
             echo "<p>" . $resourceArray[$i] .  "</p><br>";
         }
         
-    echo "
-        <br>
-        <span>
-            <a href=''>Clone</a>|
-            <a href='' class='delete_path'>Delete</a>
-        </span>
-    </div>";
+    echo "</div>";
 }
 // Delete path function.
 function deletePath($pathId, $resourceId) {
@@ -192,9 +183,9 @@ function getPathAmounts() {
     $dbPassword = "";
 
     // Ethan's database
-    $dbName = "project";
+    //$dbName = "project";
     // Jay's database
-    // $dbName = "learning_paths";
+    $dbName = "learning_paths";
 
             $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
