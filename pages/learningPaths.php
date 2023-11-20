@@ -42,7 +42,7 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
             <a href="../index.php">Home</a>
         </span>
         <span id="login">
-            <a href="">Register</a>|
+            <a href="register.php">Register</a>|
             <a href="login.php">Login</a>
         </span>
     </nav>        
