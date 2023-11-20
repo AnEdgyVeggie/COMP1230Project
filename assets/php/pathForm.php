@@ -24,10 +24,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
     }
 
-    // Place variables into learning path object.
-    // $paths = array();
-    // array_push($paths, new LearningPath($pathName, 'Jay', $pathDescription));
-
     // Function to place resources in DB.
     pushResources($pathUser, $pathName, $pathDescription, $pathResources);
 }
@@ -40,9 +36,9 @@ function pushResources($pathUser, $pathName, $pathDescription, $pathResources) {
     $dbPassword = "";
 
     // Ethan's database
-    $dbName = "project";
+    //$dbName = "project";
     // Jay's database
-    // $dbName = "learning_paths";
+    $dbName = "learning_paths";
 
     // Connection info.
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
@@ -110,9 +106,9 @@ function showResources($pathId) {
     $dbPassword = "";
 
     // Ethan's database
-    $dbName = "project";
+    //$dbName = "project";
     // Jay's database
-    // $dbName = "learning_paths";
+    $dbName = "learning_paths";
 
 
     // Connection info.
@@ -156,10 +152,10 @@ function showResources($pathId) {
         
     echo "
         <br>
-        <span>
-            <a href=''>Clone</a>|
-            <a href='' class='delete_path'>Delete</a>
-        </span>
+        <ul>
+            <li>Clone</li>
+            <li>Delete</li>
+        </ul>
     </div>";
 }
 // Delete path function.

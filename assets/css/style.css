@@ -112,3 +112,6 @@ article {
     border: 2px solid white;
     padding: 10px;
 }
+.pathsGridItems > ul > li {
+    display: inline-block;
+}

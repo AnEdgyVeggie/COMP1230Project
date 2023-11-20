@@ -15,7 +15,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="../assets/js/learning-path.js" defer></script>
+    <script src="../assets/js/learningPathFunctions.js" defer></script>
     <title>Learning Paths</title>
 </head>
 <body>
@@ -52,6 +52,7 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
 }
 
 ?>
+<a href="" onlick='deleteAlert()'>Test</a>
     <h1>Learning Paths</h1>
     <div id="pathsGrid">
         <?php
