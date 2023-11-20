@@ -1,10 +1,15 @@
 <?php
-    // LOCAL DATABASE
-    $dbServerName = "localhost";
+    $dbServername = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
-    $dbName = "project";
 
+    // Ethan's database
+    $dbName = "project";
+    // Jay's database
+    // $dbName = "learning_paths";
+
+
+    
     // GBLEARN CPANEL
     // $dbServerName = "localhost:3306";
     // $dbUsername = "f3479568_f3479568";

@@ -38,7 +38,12 @@ function pushResources($pathUser, $pathName, $pathDescription, $pathResources) {
     $dbServername = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
-    $dbName = "learning_paths";
+
+    // Ethan's database
+    $dbName = "project";
+    // Jay's database
+    // $dbName = "learning_paths";
+
     // Connection info.
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
@@ -103,7 +108,13 @@ function showResources($pathId) {
     $dbServername = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
-    $dbName = "learning_paths";
+
+    // Ethan's database
+    $dbName = "project";
+    // Jay's database
+    // $dbName = "learning_paths";
+
+
     // Connection info.
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 

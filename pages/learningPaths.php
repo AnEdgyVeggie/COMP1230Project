@@ -64,6 +64,7 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
         ?>
     </div>
 
+
 <script>
     const logout = () => {
         window.location.href = "../index.php";
