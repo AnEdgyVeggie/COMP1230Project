@@ -177,17 +177,7 @@ function getPathAmounts() {
             $count = mysqli_fetch_assoc($result);
             return $count;
 }
-// Check password for deletion.
-function checkPass($row) {
-
-    while ($row) {
-        if ($_POST['password'] == $row['password']) {
-            $pathId = $_POST['pathId'];
-            $resourceId = $_POST['resourceId'];
-            deletePath($pathId, $resourceId);
-            header("Location: ../../pages/learningPaths.php");
-        } else {
-            echo "<script> alert('Incorrect password!') </script>";
-        }
-    }
+// Edit path.
+function editPath() {
+    
 }
