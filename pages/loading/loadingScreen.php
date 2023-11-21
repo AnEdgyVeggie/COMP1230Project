@@ -81,6 +81,7 @@ include_once("../../assets/php/databaseHandler.php");
                     echo '<script> 
                     location.href = "../learningPaths.php?loggedIn=true";
                     </script>';
+                    setcookie('userId', $row['id'], time()+30*1000, '/', "", false, true);
                 }
             }
         }

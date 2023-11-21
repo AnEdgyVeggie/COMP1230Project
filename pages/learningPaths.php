@@ -2,12 +2,11 @@
     // if there is a query string in the URL (?loggedin=true), it will set 2 cookies for the entire site:
     // The users email, and a loggedIn=true, which will be used to keep the site facing a logged in user
     if (!empty($_GET)) {
-        setcookie("email", $_COOKIE['email'], time() + 3600, '/');
         setcookie("loggedIn", true, time() + 3600, '/');
     }
 
     // include needs to be after the if statement above
-    include "../assets/php/pathForm.php";
+    include("../assets/php/pathFunctions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,7 +14,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="../assets/js/learning-path.js" defer></script>
+    <script src="../assets/js/learningPathFunctions.js" defer></script>
     <title>Learning Paths</title>
 </head>
 <body>
@@ -63,7 +62,6 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
             // option to delete databases, click button, proper id input into function
         ?>
     </div>
-
 
 <script>
     const logout = () => {

@@ -46,8 +46,6 @@ form {
     font-size: 20px;
     border: 3px solid white;
     padding: 50px;
-
-
 }
 .fields {
     display: grid;
@@ -111,4 +109,15 @@ article {
     display: grid;
     border: 2px solid white;
     padding: 10px;
+}
+.pathsGridItems > p {
+    margin: 2px;
+}
+.deleteForm {
+    display: block !important;
+    border: none !important;
+    padding: 0px !important;
+}
+.deleteSubmit {
+    width: 100px;
 }
