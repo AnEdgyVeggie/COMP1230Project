@@ -51,7 +51,7 @@ if (isset($_COOKIE['loggedIn'])) {
             echo '<span>Registration Complete! Please login with your credentials</span>';
         }
     ?>
-    <form >
+    <form>
         <label for="email">Email Address: </label>
         <input type="text" name="email" id="email">
 

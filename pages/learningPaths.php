@@ -6,7 +6,7 @@
     }
 
     // include needs to be after the if statement above
-    include "../assets/php/pathForm.php";
+    include("../assets/php/pathFunctions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -51,7 +51,6 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
 }
 
 ?>
-<a href="" onlick='deleteAlert()'>Test</a>
     <h1>Learning Paths</h1>
     <div id="pathsGrid">
         <?php
@@ -63,7 +62,6 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
             // option to delete databases, click button, proper id input into function
         ?>
     </div>
-
 
 <script>
     const logout = () => {
