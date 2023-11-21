@@ -17,7 +17,7 @@ if (isset($_COOKIE['loggedIn'])) {
             <nav>
                 <span>
                     <a href="pages/learningPaths.php">Learning Path HTML</a>|
-                    <a href="../index.php">Home</a>
+                    <a href="index.php">Home</a>
                 </span>
                 <span id="login">
                     <a onclick="logout();" href="" >Logout</a>
