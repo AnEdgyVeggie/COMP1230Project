@@ -54,6 +54,13 @@ const register = (firstName, lastName, email, password, confirmPass) => {
     // document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/project/pages/loading`;
     // document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/project/pages/loading`;
 
+    // JAY MAC LOCALHOST
+    document.cookie = `firstName=${firstName}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
+    document.cookie = `lastName=${lastName}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;
+    document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;
+    document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
+
+
     // SERVERSIDE
     // document.cookie = `firstName=${firstName}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
     // document.cookie = `lastName=${lastName}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;

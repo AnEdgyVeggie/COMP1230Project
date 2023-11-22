@@ -1,10 +1,10 @@
 // Counter variable.
-let resourceCount = 1;
+let resourceCount = 2;
 const counter = document.getElementById("counter");
 
 document.getElementById("add-button").onclick = function() {
     // Place DOM elements into variables.
-    const pathResources = document.getElementById("given_resources");
+    const pathResources = document.getElementById("append");
     const inputText = document.createElement("input");
     const br = document.createElement("br");
 
