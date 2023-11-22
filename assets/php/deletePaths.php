@@ -14,7 +14,7 @@ $resourceId = $_POST['resourceId'];
 
 // If password matches the one in the db...
 if ($confirmPassword == $password['password']) {
-    include_once('confirmDelete.php');
+    include('confirmDelete.php');
     echo "Path deleted. <br><br>";
     // Delete the path...
     deletePath($pathId, $resourceId);

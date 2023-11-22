@@ -1,4 +1,5 @@
 <?php
+
 // Grab path id and resource id from previous page to transfer into the delete function.
 $confirmPathId = $_POST['pathId'];
 $confirmResourceId = $_POST['resourceId'];
@@ -11,6 +12,6 @@ echo "
         <input type='text' name='confirmPassword'>
         <input type='text' name='pathId' hidden='true' value='$confirmPathId'>
         <input type='text' name='resourceId' hidden='true' value='$confirmResourceId'>
-        <input type='submit' name='confirmSubmit' value='Submit'>
+        <input type='submit' name='confirmDeleteSubmit' value='Submit'>
     </form>
 ";
