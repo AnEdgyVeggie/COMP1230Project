@@ -7,9 +7,9 @@ function pushResources($pathUser, $pathName, $pathDescription, $pathResources) {
     $dbPassword = "";
 
     // Ethan's database
-    //$dbName = "project";
+    $dbName = "project";
     // Jay's database
-    $dbName = "learning_paths";
+    //$dbName = "learning_paths";
 
     // Connection info.
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
@@ -78,9 +78,9 @@ function showResources($pathId) {
     $dbPassword = "";
 
     // Ethan's database
-    //$dbName = "project";
+    $dbName = "project";
     // Jay's database
-    $dbName = "learning_paths";
+    //$dbName = "learning_paths";
 
 
     // Connection info.
@@ -133,7 +133,7 @@ function showResources($pathId) {
         }
         
         if ($_COOKIE['userId'] == $givenUserId) {
-            echo "<form action='../assets/php/deletePaths.php' method='post' class='deleteForm'>
+            echo "<form action='../assets/php/confirmDelete.php' method='post' class='deleteForm'>
              <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
              <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
              <input type='submit' value='Delete Path' class='deleteSubmit'>
@@ -147,7 +147,8 @@ function deletePath($pathId, $resourceId) {
         $dbServername = "localhost";
         $dbUsername = "root";
         $dbPassword = "";
-        $dbName = "learning_paths";
+        $dbName = "project";
+        //$dbName = "learning_paths";
         // Connection info.
         $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
@@ -165,9 +166,9 @@ function getPathAmounts() {
     $dbPassword = "";
 
     // Ethan's database
-    //$dbName = "project";
+    $dbName = "project";
     // Jay's database
-    $dbName = "learning_paths";
+    //$dbName = "learning_paths";
 
             $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
