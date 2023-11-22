@@ -225,18 +225,30 @@ function editPath($pathId) {
     $existingResourceId = $resultRows['resources_id'];
 
     // Resources
-    $existingResourceId = $resourceResult['resource_id'];
-    $existingResources = $resultResources['resources'];
-
+    $existingResourceId = $resultResources['resource_id'];
+    $existingResources = $resultResources['resource_list'];
+    $resourceArray = explode(',', $resultResources['resource_list']);
+ 
     echo "
+        <link rel='stylesheet' href='../css/style.css'>
+        <script src='../js/learning-path.js' defer></script>
         <form method='post' action='' id='learning-path-form'>
         <label for='path_name'>Learning Path Name</label>
         <input type='text' id='path_name' name='path_name' value='$existingPathName'>
 
         <label for='path_desc'>Path Description</label>
         <textarea id='path_desc' name='path_desc' cols='30' rows='10' value='$existingPathDesc'></textarea>
-
         <label for='given_resources' id='given_resources' name='given_resources'>Resources</label>
+        ";
+
+    for ($i = 0; $i < count($resourceArray); $i++) {
+        echo "
+            <input type='text' name='given_resources" . $i + 1 . "' value='$resourceArray[$i]'>
+        ";
+    }
+
+    echo "
+        <div id='append'></div>
         <input type='button' id='add-button' value='Add'>
         <br>
         <input type='number' name='counter' id='counter' readonly='true' hidden='true'>

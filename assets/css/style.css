@@ -121,3 +121,7 @@ article {
 .userSubmitOptions {
     width: 100px;
 }
+
+#append > input {
+    width: 100%;
+}
