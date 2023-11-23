@@ -15,7 +15,7 @@ $resourceId = $_POST['resourceId'];
 // If password matches the one in the db...
 if ($confirmPassword == $password['password']) {
     include('confirmDelete.php');
-    echo "Path deleted. <br><br>";
+    echo "<p>Path deleted.</p> <br><br>";
     // Delete the path...
     deletePath($pathId, $resourceId);
     // ... and offer a trip back to the learning paths page.
@@ -28,7 +28,7 @@ if ($confirmPassword == $password['password']) {
 } else { // If password is incorrect...
     include_once('confirmDelete.php');
     // Show error, prompt for return to previous page or allow user to retry.
-    echo "Incorrect password. Please try again or return to the previous page. <br><br>";
+    echo "<p>Incorrect password. Please try again or return to the previous page.</p> <br>";
     echo "
         <form action='../../pages/learningPaths.php' method='post'>
             <label for='return'>Return to Learning Paths?</label>

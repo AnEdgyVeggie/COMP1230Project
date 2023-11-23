@@ -125,3 +125,7 @@ article {
 #append > input {
     width: 100%;
 }
+
+textarea {
+    font-family: 'Raleway';
+}
