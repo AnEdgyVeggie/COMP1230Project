@@ -1,6 +1,6 @@
 <?php 
 // Push resources function.
-function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResources, $pathId = 1, $counter) {
+function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResources, $pathId = 1) {
     // DB info.
     $dbServername = "localhost";
     $dbUsername = "root";
@@ -60,15 +60,15 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
 
     if ($edit) {
         // Insert queries.
-        $sqlPathInsert = "UPDATE paths SET path_id = $pathId, user_id = $pathUser, 
+        $sqlUpdatePath = "UPDATE paths SET path_id = $pathId, user_id = $pathUser, 
                           path_name = '$pathName', path_desc = '$pathDescription', 
-                          resource_id = $pathId";
+                          resource_id = $pathId WHERE path_id = $pathId";
 
-        $sqlResourceInsert = "UPDATE resources SET resource_id = $pathId, 
-                              path_id = $pathId, resource_list = '$resourceString'";
+        $sqlUpdateResource = "UPDATE resources SET resource_id = $pathId, 
+                              path_id = $pathId, resource_list = '$resourceString' WHERE resource_id = $pathId";
 
-        mysqli_query($conn, $sqlPathInsert);
-        mysqli_query($conn, $sqlResourceInsert);
+        mysqli_query($conn, $sqlUpdatePath);
+        mysqli_query($conn, $sqlUpdateResource);
     } else {
         // Insert queries.
         $sqlPathInsert = "INSERT INTO paths (path_id, user_id, path_name, path_desc, resource_id)
@@ -155,6 +155,7 @@ function showResources($pathId) {
             <form action='../assets/php/editPaths.php' method='post' class='userFormOptions'>
                 <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
                 <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
+                <input type='text' name='resourceList' id='resourceList' value='$resourceString' hidden='true'>
                 <input type='submit' name='edit' value='Edit Path' class='userSubmitOptions'>
             </form>
              ";
@@ -243,10 +244,11 @@ function getExistingValues($pathId) {
         )
     );
     // Return arrays for use in editPaths.php.
-    return [$infoArray, $resourceArray, $pathId];
+    return [$infoArray, $pathId];
 }
 
 function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
+        $resourceList = implode(',', $resourceArray);
         // Echo out the createPath format with the filled pre-existing info.
         echo "
         <link rel='stylesheet' href='../css/style.css'>
@@ -259,18 +261,19 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
         <textarea id='path_desc' name='path_desc' cols='30' rows='10'>" . $infoArray['existingPathDesc'] . "</textarea>
         <label for='given_resources' id='given_resources' name='given_resources'>Resources</label>
         ";
-    // Loop to output proper amount of resources.
-    for ($i = 0; $i < count($resourceArray); $i++) {
-        echo "
-            <input type='text' name='given_resources" . $i + 1 . "' value='$resourceArray[$i]'>
-        ";
-    }
+        // Loop to output proper amount of resources.
+        for ($i = 0; $i < count($resourceArray); $i++)  {
+            echo "
+                <input type='text' name='given_resources" . ($i + 1) . "' value='" . $resourceArray[$i] . "'>
+            ";
+        }
 
     echo "
         <link rel='stylesheet' href='../css/style.css'>
         <div id='append'></div>
         <input type='button' id='add-button' value='Add'>
         <br>
+        <input type='text' name='resourceList' id='resourceList' value='$resourceList' hidden='true'>
         <input type='number' name='counter' id='counter' value='$counter' hidden='true'>
         <input type='text' name='edit' id='edit' value='true' hidden='true'>
         <input type='text' name='pathId' value='$pathId' hidden='true'>
@@ -307,12 +310,19 @@ function resourceCount($pathId) {
     
     
         // Go through each row, split resources, grab path info.
-        while ($row = mysqli_fetch_assoc($selectPathsResult)) {
-            // echo print_r($row);
-    
+        while ($row = mysqli_fetch_assoc($selectPathsResult)) {    
             // Split resources.
             $resourceString = $row['resource_list'];
             $resourceArray = explode(',', $resourceString);
         }
-        return $resourceArray;
+        return count($resourceArray);
+}
+
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output)) {
+        print_r($output);
+    } else {
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+    }
 }

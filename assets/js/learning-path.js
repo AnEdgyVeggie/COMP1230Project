@@ -1,8 +1,9 @@
 // Counter variable.
 let resourceCount;
-let edit = parseInt(document.getElementById("edit").value);
+let edit = document.getElementById("edit").value;
+
 console.log(edit);
-if (!edit) {
+if (edit == 'false') {
     resourceCount = 2;
 } else {
     resourceCount = parseInt(document.getElementById("counter").value);
