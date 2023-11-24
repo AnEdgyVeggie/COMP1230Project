@@ -9,7 +9,7 @@ echo "
     <link rel='stylesheet' href='../css/style.css'>
     <form action='deletePaths.php' method='post'>
         <label for='confirmPassword'>Enter your password:</label>
-        <input type='text' name='confirmPassword'>
+        <input type='password' name='confirmPassword'>
         <input type='text' name='pathId' hidden='true' value='$confirmPathId'>
         <input type='text' name='resourceId' hidden='true' value='$confirmResourceId'>
         <input type='submit' name='confirmDeleteSubmit' value='Submit'>

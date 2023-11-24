@@ -14,7 +14,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../assets/css/style.css">
-    <script src="../assets/js/learningPathFunctions.js" defer></script>
     <title>Learning Paths</title>
 </head>
 <body>
@@ -58,8 +57,6 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
             for ($i = 0; $i < getPathAmounts()['total']; $i++) {
                 showResources($i + 1);
             }
-            
-            // option to delete databases, click button, proper id input into function
         ?>
     </div>
 
