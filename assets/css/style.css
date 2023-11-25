@@ -113,11 +113,19 @@ article {
 .pathsGridItems > p {
     margin: 2px;
 }
-.deleteForm {
+.userFormOptions {
     display: block !important;
     border: none !important;
     padding: 0px !important;
 }
-.deleteSubmit {
+.userSubmitOptions {
     width: 100px;
+}
+
+#append > input {
+    width: 100%;
+}
+
+textarea {
+    font-family: 'Raleway';
 }

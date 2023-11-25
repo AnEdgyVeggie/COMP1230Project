@@ -15,6 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $pathUser = $_COOKIE['userId'];
         $pathDescription = $_POST['path_desc'];
         $pathResources = array();
+        
 
         // Pull from counter element to push the array.
         if (isset($_POST['counter'])) {
@@ -25,8 +26,33 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
+        if ($_POST['edit'] == "true") {
+            // Pull values from the edit form.
+            $existingPathId = $_POST['pathId'];
+            $pathName = $_POST['path_name'];
+            $pathUser = $_COOKIE['userId'];
+            $pathDescription = $_POST['path_desc'];
+            $resourceList = $_POST['resourceList'];
+            $pathResources = explode(',', $resourceList);
+            $newResources = array();
+
+            $existingCount = count(getExistingValues($existingPathId)[0]['existingResources'][0]);
+            $newCount = $_POST['counter'];
+
+            for ($i = ($existingCount + 1); $i < $newCount; $i++) {
+                array_push($newResources, $_POST['given_resources' . $i]);
+            }
+            // Merge the two arrays.
+            $pathResources = array_merge($pathResources, $newResources);
+            
+            // Function to place resources in DB.
+            pushResources(true, $pathUser, $pathName, $pathDescription, $pathResources, $existingPathId);
+        } else {
         // Function to place resources in DB.
-        pushResources($pathUser, $pathName, $pathDescription, $pathResources);
+            pushResources(false, $pathUser, $pathName, $pathDescription, $pathResources, 1);
+        }
+
+
         header('Location: ../../pages/learningPaths.php');
     } else {
         echo "Something went wrong!";

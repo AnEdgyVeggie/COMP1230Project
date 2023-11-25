@@ -1,15 +1,13 @@
 <?php 
 // Push resources function.
-function pushResources($pathUser, $pathName, $pathDescription, $pathResources) {
+function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResources, $pathId = 1) {
     // DB info.
     $dbServername = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
 
     // Ethan's database
-    //$dbName = "project";
-    // Jay's database
-    $dbName = "learning_paths";
+    $dbName = "project";
 
     // Connection info.
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
@@ -60,15 +58,29 @@ function pushResources($pathUser, $pathName, $pathDescription, $pathResources) {
         }
     }
 
-    // Insert queries.
-    $sqlPathInsert = "INSERT INTO paths (path_id, user_id, path_name, path_desc, resources_id)
-                      VALUES ('$newPathId', '$pathUser', '$pathName', '$pathDescription', '$newResourceId');";
+    if ($edit) {
+        // Insert queries.
+        $sqlUpdatePath = "UPDATE paths SET path_id = $pathId, user_id = $pathUser, 
+                          path_name = '$pathName', path_desc = '$pathDescription', 
+                          resource_id = $pathId WHERE path_id = $pathId";
 
-    $sqlResourceInsert = "INSERT INTO resources (resource_id, path_id, resource_list)
-                          VALUES ('$newPathId', '$newPathId', '$resourceString')";
-    
-    mysqli_query($conn, $sqlPathInsert);
-    mysqli_query($conn, $sqlResourceInsert);
+        $sqlUpdateResource = "UPDATE resources SET resource_id = $pathId, 
+                              path_id = $pathId, resource_list = '$resourceString' WHERE resource_id = $pathId";
+
+        mysqli_query($conn, $sqlUpdatePath);
+        mysqli_query($conn, $sqlUpdateResource);
+    } else {
+        // Insert queries.
+        $sqlPathInsert = "INSERT INTO paths (path_id, user_id, path_name, path_desc, resource_id)
+                        VALUES ('$newPathId', '$pathUser', '$pathName', '$pathDescription', '$newResourceId');";
+
+        $sqlResourceInsert = "INSERT INTO resources (resource_id, path_id, resource_list)
+                            VALUES ('$newPathId', '$newPathId', '$resourceString')";
+        
+        mysqli_query($conn, $sqlPathInsert);
+        mysqli_query($conn, $sqlResourceInsert);
+    }
+
 }
 // Show resources function.
 function showResources($pathId) {
@@ -78,9 +90,8 @@ function showResources($pathId) {
     $dbPassword = "";
 
     // Ethan's database
-    //$dbName = "project";
-    // Jay's database
-    $dbName = "learning_paths";
+    $dbName = "project";
+
 
 
     // Connection info.
@@ -89,7 +100,7 @@ function showResources($pathId) {
     // Queries.
     $sqlSelectPaths =  "SELECT * FROM paths p 
                         JOIN resources r 
-                        ON p.resources_id = r.resource_id
+                        ON p.resource_id = r.resource_id
                         JOIN users u
                         ON u.id = p.user_id
                         WHERE p.path_id = $pathId;";
@@ -133,11 +144,21 @@ function showResources($pathId) {
         }
         
         if ($_COOKIE['userId'] == $givenUserId) {
-            echo "<form action='../assets/php/deletePaths.php' method='post' class='deleteForm'>
-             <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
-             <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
-             <input type='submit' value='Delete Path' class='deleteSubmit'>
-             </form>";
+            echo "
+            <form action='../assets/php/confirmDelete.php' method='post' class='userFormOptions'>
+                <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
+                <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
+                <input type='submit' name='delete' value='Delete Path' class='userSubmitOptions'>
+            </form>";
+
+             echo "
+            <form action='../assets/php/editPaths.php' method='post' class='userFormOptions'>
+                <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
+                <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
+                <input type='text' name='resourceList' id='resourceList' value='$resourceString' hidden='true'>
+                <input type='submit' name='edit' value='Edit Path' class='userSubmitOptions'>
+            </form>
+             ";
         }
     echo "</div>";
 }
@@ -147,7 +168,8 @@ function deletePath($pathId, $resourceId) {
         $dbServername = "localhost";
         $dbUsername = "root";
         $dbPassword = "";
-        $dbName = "learning_paths";
+        $dbName = "project";
+
         // Connection info.
         $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
@@ -165,9 +187,7 @@ function getPathAmounts() {
     $dbPassword = "";
 
     // Ethan's database
-    //$dbName = "project";
-    // Jay's database
-    $dbName = "learning_paths";
+    $dbName = "project";
 
             $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
@@ -177,7 +197,132 @@ function getPathAmounts() {
             $count = mysqli_fetch_assoc($result);
             return $count;
 }
+
 // Edit path.
-function editPath() {
+function getExistingValues($pathId) {
+    // DB info.
+    $dbServername = "localhost";
+    $dbUsername = "root";
+    $dbPassword = "";
+
+    // Ethan's database
+    $dbName = "project";
+    // Jay's database
+    //$dbName = "learning_paths";
+
+    // Connection info.
+    $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+
+    // Query to grab pre-existing info.
+    $prevInfo = "SELECT * FROM paths p 
+                 JOIN resources r ON p.path_id = r.path_id
+                 WHERE p.path_id = $pathId";
+
+    $prevResources = "SELECT * FROM paths p 
+                      JOIN resources r ON p.path_id = r.path_id
+                      WHERE r.resource_id = $pathId";
+
+    // Result for paths query.
+    $result = mysqli_query($conn, $prevInfo);
+    $resultRows = mysqli_fetch_assoc($result);
+
+    // Result for resources.
+    $resourceResult = mysqli_query($conn, $prevResources);
+    $resultResources = mysqli_fetch_assoc($resourceResult);
+
+    // Place existing info into variables.
+    $resourceArray = explode(',', $resultResources['resource_list']);
+
+    $infoArray = array (
+        'existingPathId' => $resultRows['path_id'],
+        'existingUserId' => $resultRows['user_id'],
+        'existingPathName' => $resultRows['path_name'],
+        'existingPathDesc' => $resultRows['path_desc'],
+        'existingResourceId' => $resultRows['resource_id'],
+        'existingResources' => array (
+            $resourceArray
+        )
+    );
+    // Return arrays for use in editPaths.php.
+    return [$infoArray, $pathId];
+}
+
+function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
+        $resourceList = implode(',', $resourceArray);
+        // Echo out the createPath format with the filled pre-existing info.
+        echo "
+        <link rel='stylesheet' href='../css/style.css'>
+        <script src='../js/learning-path.js' defer></script>
+        <form method='post' action='pathForm.php' id='learning-path-form'>
+        <label for='path_name'>Learning Path Name</label>
+        <input type='text' id='path_name' name='path_name' value='". $infoArray['existingPathName'] . "'>
+
+        <label for='path_desc'>Path Description</label>
+        <textarea id='path_desc' name='path_desc' cols='30' rows='10'>" . $infoArray['existingPathDesc'] . "</textarea>
+        <label for='given_resources' id='given_resources' name='given_resources'>Resources</label>
+        ";
+        // Loop to output proper amount of resources.
+        for ($i = 0; $i < count($resourceArray); $i++)  {
+            echo "
+                <input type='text' name='given_resources" . ($i + 1) . "' value='" . $resourceArray[$i] . "'>
+            ";
+        }
+
+    echo "
+        <link rel='stylesheet' href='../css/style.css'>
+        <div id='append'></div>
+        <input type='button' id='add-button' value='Add'>
+        <br>
+        <input type='text' name='resourceList' id='resourceList' value='$resourceList' hidden='true'>
+        <input type='number' name='counter' id='counter' value='$counter' hidden='true'>
+        <input type='text' name='edit' id='edit' value='true' hidden='true'>
+        <input type='text' name='pathId' value='$pathId' hidden='true'>
+        <br>
+        <br>
+        <input type='submit' value='Edit'></input>
+    </form>
+    ";
+}
+
+function resourceCount($pathId) {
+        // DB info.
+        $dbServername = "localhost";
+        $dbUsername = "root";
+        $dbPassword = "";
     
+        // Ethan's database
+        $dbName = "project";
+    
+    
+    
+        // Connection info.
+        $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+    
+        // Queries.
+        $sqlSelectPaths =  "SELECT * FROM paths p 
+                            JOIN resources r 
+                            ON p.resource_id = r.resource_id
+                            JOIN users u
+                            ON u.id = p.user_id
+                            WHERE p.path_id = $pathId;";
+    
+        $selectPathsResult = mysqli_query($conn, $sqlSelectPaths);
+    
+    
+        // Go through each row, split resources, grab path info.
+        while ($row = mysqli_fetch_assoc($selectPathsResult)) {    
+            // Split resources.
+            $resourceString = $row['resource_list'];
+            $resourceArray = explode(',', $resourceString);
+        }
+        return count($resourceArray);
+}
+
+function debug_to_console($data) {
+    $output = $data;
+    if (is_array($output)) {
+        print_r($output);
+    } else {
+    echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
+    }
 }

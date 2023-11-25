@@ -52,9 +52,12 @@
         <textarea id="path_desc" name="path_desc" cols="30" rows="10"></textarea>
 
         <label for="given_resources" id="given_resources" name="given_resources">Resources</label>
+        <input type="text" id='given_resources1' name='given_resources1'>
+        <div id="append"></div>
         <input type="button" id="add-button" value="Add">
         <br>
-        <input type="number" name="counter" id="counter" readonly="true" hidden="true">
+        <input type="number" name="counter" id="counter" hidden="true">
+        <input type="text" id='edit' name='edit' value='false' hidden='true'>
         <br>
         <br>
         <a href="learningPaths.php"><input type="submit"></a>

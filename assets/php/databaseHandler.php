@@ -4,9 +4,8 @@
     $dbPassword = "";
 
     // Ethan's database
-    //$dbName = "project";
-    // Jay's database
-    $dbName = "learning_paths";
+    $dbName = "project";
+
 
 
     
