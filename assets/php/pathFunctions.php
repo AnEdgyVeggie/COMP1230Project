@@ -15,8 +15,6 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
     // Separate elements into comma separated list.
     $resourceString = implode(',', $pathResources);
 
-    // Query variables/queries.
-
     // ******* RESOURCE ID MANAGEMENT ********
     // Grab existing resource IDs.
     $sqlSelectResourceId = "SELECT resource_id FROM resources;";
@@ -92,8 +90,6 @@ function showResources($pathId) {
     // Ethan's database
     $dbName = "project";
 
-
-
     // Connection info.
     $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
 
@@ -107,30 +103,30 @@ function showResources($pathId) {
 
     $selectPathsResult = mysqli_query($conn, $sqlSelectPaths);
 
-
     // Go through each row, split resources, grab path info.
     while ($row = mysqli_fetch_assoc($selectPathsResult)) {
-        // echo print_r($row);
+            // Split resources.
+            $resourceString = $row['resource_list'];
+            $resourceArray = explode(',', $resourceString);
 
-        // Split resources.
-        $resourceString = $row['resource_list'];
-        $resourceArray = explode(',', $resourceString);
+            // Path name.
+            $givenPathName = $row['path_name'];
 
-        // Path name.
-        $givenPathName = $row['path_name'];
+            // User name.
+            $givenUserName = $row['firstName'];
 
-        // User name.
-        $givenUserName = $row['firstName'];
+            // Path description.
+            $givenPathDesc = $row['path_desc'];
 
-        // Path description.
-        $givenPathDesc = $row['path_desc'];
-
-        // ids (for deletion).
-        $givenUserId = $row['user_id'];
-        $givenPathId = $row['path_id'];
-        $givenResourceId = $row['resource_id'];
+            // ids (for deletion).
+            $givenUserId = $row['user_id'];
+            $givenPathId = $row['path_id'];
+            $givenResourceId = $row['resource_id'];
     }
+    
+    if (isset($givenPathId)) {
 
+    
     // Page layout.
     echo "
         <div class='pathsGridItems'>
@@ -142,7 +138,17 @@ function showResources($pathId) {
         for ($i = 0; $i < count($resourceArray); $i++) {
             echo "<p>" . $resourceArray[$i] .  "</p><br>";
         }
+    echo "
+        <form action='../assets/php/pathForm.php' method='post' class='userFormOptions'>
+            <input type='text' name='path_name' value='" . $givenPathName . "' hidden='true'>
+            <input type='text' name='path_desc' value='" . $givenPathDesc . "' hidden='true'>
+            <input type='text' name='resourceList' value='" . $resourceString . "' hidden='true'>
+            <input type='text' name='path_user' value='$givenUserName' hidden='true'>
+            <input type='submit' name='clone' value='Clone' class='userSubmitOptions'>
+        </form>
+        ";    
         
+        // If user owns the path, display delete / edit options.
         if ($_COOKIE['userId'] == $givenUserId) {
             echo "
             <form action='../assets/php/confirmDelete.php' method='post' class='userFormOptions'>
@@ -151,16 +157,17 @@ function showResources($pathId) {
                 <input type='submit' name='delete' value='Delete Path' class='userSubmitOptions'>
             </form>";
 
-             echo "
+            echo "
             <form action='../assets/php/editPaths.php' method='post' class='userFormOptions'>
                 <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
                 <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
                 <input type='text' name='resourceList' id='resourceList' value='$resourceString' hidden='true'>
                 <input type='submit' name='edit' value='Edit Path' class='userSubmitOptions'>
             </form>
-             ";
+            ";
         }
     echo "</div>";
+    }
 }
 // Delete path function.
 function deletePath($pathId, $resourceId) {
@@ -247,6 +254,7 @@ function getExistingValues($pathId) {
     return [$infoArray, $pathId];
 }
 
+// Shows the edit menu that will redirect to the pathForm page for editing.
 function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
         $resourceList = implode(',', $resourceArray);
         // Echo out the createPath format with the filled pre-existing info.
@@ -284,6 +292,7 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
     ";
 }
 
+// Get number of resources in specified path.
 function resourceCount($pathId) {
         // DB info.
         $dbServername = "localhost";
@@ -318,6 +327,7 @@ function resourceCount($pathId) {
         return count($resourceArray);
 }
 
+// Debugger for jay :)
 function debug_to_console($data) {
     $output = $data;
     if (is_array($output)) {

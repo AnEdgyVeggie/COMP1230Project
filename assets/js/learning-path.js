@@ -31,10 +31,12 @@ document.getElementById("add-button").onclick = function() {
 
         if (nameExists) {
             pathResources.appendChild(inputText).setAttribute("id", ("given_resources" + counterUp));
+            pathResources.appendChild(inputText).setAttribute("class", "resources");
             pathResources.appendChild(inputText).setAttribute("name", ("given_resources" + counterUp));
             pathResources.appendChild(br);
         } else {
             pathResources.appendChild(inputText).setAttribute("id", ("given_resources" + resourceCount));
+            pathResources.appendChild(inputText).setAttribute("class", "resources");
             pathResources.appendChild(inputText).setAttribute("name", ("given_resources" + resourceCount));
             pathResources.appendChild(br);
         }

@@ -26,6 +26,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
         }
 
+        // If this is an edit to an existing post...
         if ($_POST['edit'] == "true") {
             // Pull values from the edit form.
             $existingPathId = $_POST['pathId'];
@@ -47,14 +48,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             
             // Function to place resources in DB.
             pushResources(true, $pathUser, $pathName, $pathDescription, $pathResources, $existingPathId);
-        } else {
+        } else { // If this is a new post...
         // Function to place resources in DB.
             pushResources(false, $pathUser, $pathName, $pathDescription, $pathResources, 1);
         }
-
-
+        // Relocate to learningPaths page.
         header('Location: ../../pages/learningPaths.php');
-    } else {
-        echo "Something went wrong!";
+    } else if ($_POST['clone'] == 'Clone') {
+        $pathName = $_POST['path_name'];
+        $pathUser = $_COOKIE['userId'];
+        $pathDescription = $_POST['path_desc'];
+        $resourceList = $_POST['resourceList'];
+
+        $resourceArray = explode(',', $resourceList);
+
+        pushResources(false, $pathUser, $pathName, $pathDescription, $resourceArray);
+        header('Location: ../../pages/learningPaths.php');
     }
 }
