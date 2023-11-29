@@ -52,6 +52,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Function to place resources in DB.
             pushResources(false, $pathUser, $pathName, $pathDescription, $pathResources, 1);
         }
+
         // Relocate page.
         header('Location: ../../pages/learningPaths.php');
     } else if ($_POST['clone'] == 'Clone') {

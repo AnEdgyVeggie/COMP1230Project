@@ -25,6 +25,7 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
     $existingResourceString = mysqli_query($conn, $sqlSelectResources);
 
     $array = array();
+
     while ($row = mysqli_fetch_assoc($existingResourceString)) {
         $test =  $row['resource_list'];
         $explodedString = explode(',', $test);
@@ -71,7 +72,7 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
     // Count of resources in array.
     $arrayCount = count($pathResources);
     $existingCount = count($array);
-    $calculation = $arrayCount - $existingCount;
+    $calculation = $arrayCount + $existingCount;
     
 
     if ($edit) {
@@ -82,14 +83,13 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
 
         $sqlUpdateResource = "UPDATE resources SET resource_id = $pathId, 
                               path_id = $pathId, resource_list = '$resourceString' WHERE resource_id = $pathId";
-        // doesnt work bc edit is firing it twice
-        for ($i = 0; $i < $calculation; $i++) {
-            $sqlLikeInsert = "INSERT INTO resource_likes (path_id, resource_index, likes)
-            VALUES ($pathId, $existingCount, 0)";
-            mysqli_query($conn, $sqlLikeInsert);
-            $existingCount++;
-        }
         
+        for ($i = $existingCount; $i < $arrayCount; $i++) {
+            $sqlLikeInsert = "INSERT INTO resource_likes (path_id, resource_index, likes)
+            VALUES ($pathId, " . $i  . ", 0)";
+            mysqli_query($conn, $sqlLikeInsert);
+        }
+
         mysqli_query($conn, $sqlUpdatePath);
         mysqli_query($conn, $sqlUpdateResource);
         
@@ -196,7 +196,6 @@ function showResources($pathId) {
         </form>
         ";
 
-        
         // If user owns the path, display delete / edit options.
         if ($_COOKIE['userId'] == $givenUserId) {
             echo "
@@ -342,6 +341,9 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
         <input type='submit' value='Edit'></input>
     </form>
     ";
+
+    debug_to_console(count($resourceArray));
+
 }
 
 // Get number of resources in specified path.
@@ -383,7 +385,7 @@ function resourceCount($pathId) {
 function debug_to_console($data) {
     $output = $data;
     if (is_array($output)) {
-        print_r($output);
+        echo "<pre>"; print_r($output); echo "</pre>";
     } else {
     echo "<script>console.log('Debug Objects: " . $output . "' );</script>";
     }
