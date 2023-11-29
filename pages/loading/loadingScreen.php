@@ -40,7 +40,7 @@ include_once("../../assets/php/databaseHandler.php");
 
         if ($resultCheck > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                if ($row['emailAddress'] == $_COOKIE['email'])  {
+                if ($row['emailAddress'] == $_COOKIE['userId'])  {
                     echo '<script>
                     location.href = "../register.php"
                     alert("This email is already registered, \nplease register a new email \nor login instead")
@@ -75,7 +75,7 @@ include_once("../../assets/php/databaseHandler.php");
 
         if ($resultCheck > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
-                if ($row['emailAddress'] == $_COOKIE['email'] 
+                if ($row['emailAddress'] == $_COOKIE['userId'] 
                 && $row['password'] == $_COOKIE['password']){
                     $loginSuccess = true;
                     echo '<script> 

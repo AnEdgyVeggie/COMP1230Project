@@ -1,5 +1,5 @@
 body {
-    background-color: rgb(24, 1, 1);
+    background-color: rgb(224, 224, 224);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -9,12 +9,12 @@ body {
 
 h1, p {
 
-    color: white;
+    color: rgb(2, 158, 93);;
 }
 #d5, #d3, #d1 {
-    border-bottom: 6px solid white;
+    border-bottom: 6px solid rgb(2, 158, 93);;
     border-right: 6px solid transparent;
-    border-top: 6px solid white;
+    border-top: 6px solid rgb(2, 158, 93);;
     border-left: 6px solid transparent;
     border-radius: 60%;
     width: 80px;
@@ -23,9 +23,9 @@ h1, p {
 }
 
 #d4, #d2 {
-    border-bottom: 6px solid white;
+    border-bottom: 6px solid rgb(2, 158, 93);
     border-right: 6px solid transparent;
-    border-top: 6px solid white;
+    border-top: 6px solid rgb(2, 158, 93);;
     border-left: 6px solid transparent;
     border-radius: 60%;
     width: 60px;

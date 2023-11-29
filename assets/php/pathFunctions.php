@@ -107,7 +107,6 @@ function showResources($pathId) {
 
     $selectPathsResult = mysqli_query($conn, $sqlSelectPaths);
 
-
     // Go through each row, split resources, grab path info.
     while ($row = mysqli_fetch_assoc($selectPathsResult)) {
         // echo print_r($row);
@@ -129,7 +128,7 @@ function showResources($pathId) {
         $givenUserId = $row['user_id'];
         $givenPathId = $row['path_id'];
         $givenResourceId = $row['resource_id'];
-    }
+    
 
     // Page layout.
     echo "
@@ -159,7 +158,7 @@ function showResources($pathId) {
                 <input type='submit' name='edit' value='Edit Path' class='userSubmitOptions'>
             </form>
              ";
-        }
+        }}
     echo "</div>";
 }
 // Delete path function.

@@ -6,8 +6,6 @@
     // Ethan's database
     $dbName = "project";
 
-
-
     
     // GBLEARN CPANEL
     // $dbServerName = "localhost:3306";

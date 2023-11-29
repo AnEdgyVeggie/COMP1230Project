@@ -29,7 +29,7 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
                     <a href="../index.php">Home</a>
                 </span>
                 <span id="login">
-                    <a onclick="logout();"  >Logout</a>
+                    <a onclick="logout();">Logout</a>
                 </span>
             </nav>        
         </header>';
@@ -63,7 +63,6 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
 <script>
     const logout = () => {
         window.location.href = "../index.php";
-        console.log("hello");
         document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
         document.cookie = "email=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     }
