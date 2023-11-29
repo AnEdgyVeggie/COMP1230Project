@@ -74,14 +74,14 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
     $existingCount = count(getExistingValues($pathId)[0]['existingResources'][0]);
 
     if ($edit) {
-        // Insert queries.
+        // Update queries.
         $sqlUpdatePath = "UPDATE paths SET path_id = $pathId, user_id = $pathUser, 
                           path_name = '$pathName', path_desc = '$pathDescription', 
                           resource_id = $pathId WHERE path_id = $pathId";
 
         $sqlUpdateResource = "UPDATE resources SET resource_id = $pathId, 
                               path_id = $pathId, resource_list = '$resourceString' WHERE resource_id = $pathId";
-
+        // Insert the likes per each new edit.
         for ($i = $existingCount; $i < $arrayCount; $i++) {
             $sqlLikeInsert = "INSERT INTO resource_likes (path_id, resource_index, likes)
             VALUES ($pathId, $i , 0)";
@@ -181,10 +181,11 @@ function showResources($pathId) {
             <h3>Resources</h3> <br>
     ";
         for ($i = 0; $i < count($resourceArray); $i++) {
-
+            // Properly displays likes per resource.
             if ($resourceIndex[$i] == $i) {
                 $display = $likes[$i];
             }
+
             echo "<p>Resource " . ($i + 1) . ": " . $resourceArray[$i] . " Likes ($display)</p>
             
             <form action='../assets/php/likePath.php' method='post' class='userFormOptions'>
@@ -357,9 +358,6 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
         <input type='submit' value='Edit'></input>
     </form>
     ";
-
-    debug_to_console(count($resourceArray));
-
 }
 
 // Get number of resources in specified path.
