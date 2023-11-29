@@ -155,6 +155,20 @@ function showResources($pathId) {
             $givenPathId = $row['path_id'];
             $givenResourceId = $row['resource_id'];
     }
+
+    // Likes handling
+    $sqlSelectLikes = "SELECT * FROM resource_likes rl
+                       JOIN paths p ON p.path_id = rl.path_id
+                       WHERE rl.path_id = $pathId;";
+    $selectLikesResult = mysqli_query($conn, $sqlSelectLikes);
+
+    // Grab info
+    $likes = array();
+    $resourceIndex = array();
+    while ($row = mysqli_fetch_assoc($selectLikesResult)) {
+        array_push($likes, $row['likes']);
+        array_push($resourceIndex, $row['resource_index']);
+    }
     
     if (isset($givenPathId)) {
 
@@ -167,7 +181,11 @@ function showResources($pathId) {
             <h3>Resources</h3> <br>
     ";
         for ($i = 0; $i < count($resourceArray); $i++) {
-            echo "<p>Resource " . ($i + 1) . ": " . $resourceArray[$i] . "</p>
+
+            if ($resourceIndex[$i] == $i) {
+                $display = $likes[$i];
+            }
+            echo "<p>Resource " . ($i + 1) . ": " . $resourceArray[$i] . " Likes ($display)</p>
             
             <form action='../assets/php/likePath.php' method='post' class='userFormOptions'>
                 <input type='text' name='resource$i' value='" . $resourceArray[$i] . "' hidden='true'>
