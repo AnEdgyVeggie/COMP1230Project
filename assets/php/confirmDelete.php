@@ -1,5 +1,4 @@
 <?php
-
 // Grab path id and resource id from previous page to transfer into the delete function.
 $confirmPathId = $_POST['pathId'];
 $confirmResourceId = $_POST['resourceId'];

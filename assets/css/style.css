@@ -124,6 +124,11 @@ article {
 
 #append > input {
     width: 100%;
+    margin: 17px 0;
+}
+
+#given_resources1 {
+    width: 100%;
 }
 
 textarea {
