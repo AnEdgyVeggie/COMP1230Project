@@ -72,9 +72,19 @@ const login = (email, password) => {
     var expiry = new Date();
 
     expiry.setTime(expiry.getTime()+30* 1000);
+<<<<<<< HEAD
 
     document.cookie = `userId=${email}; expires=${expiry.toUTCString};  path=/`;
     document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/dashboard/comp1230/assignments/project/project/pages/loading`;
+=======
+    // JAY LOGIN
+    document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/project/pages/loading`;
+    document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/project/pages/loading`;
+    
+    // ETHAN LOGIN
+    // document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/dashboard/projects/project/pages/loading`;
+    // document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/dashboard/projects/project/pages/loading`;
+>>>>>>> 09262f9624788d7b36774883b67d7ba06fd05332
 
     location.href = 'loading/loadingscreen.php';
 

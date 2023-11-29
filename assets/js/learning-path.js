@@ -2,6 +2,7 @@
 let resourceCount;
 let edit = document.getElementById("edit").value;
 
+
 console.log(edit);
 if (edit == 'false') {
     resourceCount = 2;
@@ -31,10 +32,12 @@ document.getElementById("add-button").onclick = function() {
 
         if (nameExists) {
             pathResources.appendChild(inputText).setAttribute("id", ("given_resources" + counterUp));
+            pathResources.appendChild(inputText).setAttribute("class", "resources");
             pathResources.appendChild(inputText).setAttribute("name", ("given_resources" + counterUp));
             pathResources.appendChild(br);
         } else {
             pathResources.appendChild(inputText).setAttribute("id", ("given_resources" + resourceCount));
+            pathResources.appendChild(inputText).setAttribute("class", "resources");
             pathResources.appendChild(inputText).setAttribute("name", ("given_resources" + resourceCount));
             pathResources.appendChild(br);
         }
@@ -43,5 +46,5 @@ document.getElementById("add-button").onclick = function() {
     }
 }
 
-// Ensuring valid resource url.
+// Ensuring valid resource url. ***STILL NEED TO DO
 const regEx = /^[a-z0-9]+\..[a-z]$/;

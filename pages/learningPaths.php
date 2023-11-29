@@ -53,9 +53,14 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
     <h1>Learning Paths</h1>
     <div id="pathsGrid">
         <?php
-            // for loop to loop through as many paths as is in the database maybe
-            for ($i = 0; $i < getPathAmounts()['total']; $i++) {
-                showResources($i + 1);
+            // Only show resources if the given ID is not null.
+            // Accounts for path deletions.
+            for ($i = 0; $i < getPathAmounts()['total'] + 1; $i++) {
+                if (showResources($i + 1) == null) {
+                    continue;
+                } else {
+                    showResources($i + 1);
+                }
             }
         ?>
     </div>
