@@ -71,9 +71,7 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
 
     // Count of resources in array.
     $arrayCount = count($pathResources);
-    $existingCount = count($array);
-    $calculation = $arrayCount + $existingCount;
-    
+    $existingCount = count(getExistingValues($pathId)[0]['existingResources'][0]);
 
     if ($edit) {
         // Insert queries.
@@ -83,10 +81,10 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
 
         $sqlUpdateResource = "UPDATE resources SET resource_id = $pathId, 
                               path_id = $pathId, resource_list = '$resourceString' WHERE resource_id = $pathId";
-        
+
         for ($i = $existingCount; $i < $arrayCount; $i++) {
             $sqlLikeInsert = "INSERT INTO resource_likes (path_id, resource_index, likes)
-            VALUES ($pathId, " . $i  . ", 0)";
+            VALUES ($pathId, $i , 0)";
             mysqli_query($conn, $sqlLikeInsert);
         }
 
