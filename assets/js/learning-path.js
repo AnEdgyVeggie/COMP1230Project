@@ -2,6 +2,7 @@
 let resourceCount;
 let edit = document.getElementById("edit").value;
 
+
 console.log(edit);
 if (edit == 'false') {
     resourceCount = 2;
@@ -45,5 +46,5 @@ document.getElementById("add-button").onclick = function() {
     }
 }
 
-// Ensuring valid resource url.
+// Ensuring valid resource url. ***STILL NEED TO DO
 const regEx = /^[a-z0-9]+\..[a-z]$/;

@@ -19,6 +19,18 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
     // Grab existing resource IDs.
     $sqlSelectResourceId = "SELECT resource_id FROM resources;";
     $existingResourceIds = mysqli_query($conn, $sqlSelectResourceId);
+
+    // Grab existing resources.
+    $sqlSelectResources = "SELECT resource_list FROM resources;";
+    $existingResourceString = mysqli_query($conn, $sqlSelectResources);
+
+    $array = array();
+    while ($row = mysqli_fetch_assoc($existingResourceString)) {
+        $test =  $row['resource_list'];
+        $explodedString = explode(',', $test);
+        array_push($array, $explodedString);
+    }
+
     
     // New resource id.
     $newResourceId = 1;
@@ -56,6 +68,12 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
         }
     }
 
+    // Count of resources in array.
+    $arrayCount = count($pathResources);
+    $existingCount = count($array);
+    $calculation = $arrayCount - $existingCount;
+    
+
     if ($edit) {
         // Insert queries.
         $sqlUpdatePath = "UPDATE paths SET path_id = $pathId, user_id = $pathUser, 
@@ -64,9 +82,17 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
 
         $sqlUpdateResource = "UPDATE resources SET resource_id = $pathId, 
                               path_id = $pathId, resource_list = '$resourceString' WHERE resource_id = $pathId";
-
+        // doesnt work bc edit is firing it twice
+        for ($i = 0; $i < $calculation; $i++) {
+            $sqlLikeInsert = "INSERT INTO resource_likes (path_id, resource_index, likes)
+            VALUES ($pathId, $existingCount, 0)";
+            mysqli_query($conn, $sqlLikeInsert);
+            $existingCount++;
+        }
+        
         mysqli_query($conn, $sqlUpdatePath);
         mysqli_query($conn, $sqlUpdateResource);
+        
     } else {
         // Insert queries.
         $sqlPathInsert = "INSERT INTO paths (path_id, user_id, path_name, path_desc, resource_id)
@@ -74,6 +100,14 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
 
         $sqlResourceInsert = "INSERT INTO resources (resource_id, path_id, resource_list)
                             VALUES ('$newPathId', '$newPathId', '$resourceString')";
+
+        for ($i = 0; $i < $arrayCount; $i++) {
+            $sqlLikeInsert = "INSERT INTO resource_likes (path_id, resource_index, likes)
+            VALUES ($newPathId, $i, 0)";
+
+            mysqli_query($conn, $sqlLikeInsert);
+        }
+
         
         mysqli_query($conn, $sqlPathInsert);
         mysqli_query($conn, $sqlResourceInsert);
@@ -126,7 +160,6 @@ function showResources($pathId) {
     
     if (isset($givenPathId)) {
 
-    
     // Page layout.
     echo "
         <div class='pathsGridItems'>
@@ -136,8 +169,17 @@ function showResources($pathId) {
             <h3>Resources</h3> <br>
     ";
         for ($i = 0; $i < count($resourceArray); $i++) {
-            echo "<p>" . $resourceArray[$i] .  "</p><br>";
+            echo "<p>Resource " . ($i + 1) . ": " . $resourceArray[$i] . "</p>
+            
+            <form action='../assets/php/likePath.php' method='post' class='userFormOptions'>
+                <input type='text' name='resource$i' value='" . $resourceArray[$i] . "' hidden='true'>
+                <input type='text' name='resourceList' value='" . $resourceString . "' hidden='true'>
+                <input type='text' name='pathId' value='$givenPathId' hidden='true'>
+                <input type='submit' name='$i', value='Like', class='userSubmitOptions'>
+            </form>
+        <br>";
         }
+
     echo "
         <form action='../assets/php/pathForm.php' method='post' class='userFormOptions'>
             <input type='text' name='path_name' value='" . $givenPathName . "' hidden='true'>
@@ -146,7 +188,14 @@ function showResources($pathId) {
             <input type='text' name='path_user' value='$givenUserName' hidden='true'>
             <input type='submit' name='clone' value='Clone' class='userSubmitOptions'>
         </form>
-        ";    
+        ";
+    echo "
+        <form action='../assets/php/pathShare.php' method='post' class='userFormOptions'>
+        <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
+        <input type='submit' name='share' value='Share' class='userSubmitOptions'>
+        </form>
+        ";
+
         
         // If user owns the path, display delete / edit options.
         if ($_COOKIE['userId'] == $givenUserId) {
@@ -184,8 +233,11 @@ function deletePath($pathId, $resourceId) {
         $sqlDeletePath = "DELETE FROM paths WHERE path_id = $pathId;";
         $sqlDeleteResources = "DELETE FROM resources WHERE resource_id = $resourceId;";
 
+        $sqlDeleteLikes = "DELETE FROM resource_likes WHERE path_id = $pathId;";
+
         mysqli_query($conn, $sqlDeletePath);
         mysqli_query($conn, $sqlDeleteResources);
+        mysqli_query($conn, $sqlDeleteLikes);
 }
 // Get amount of paths to display on learning paths page.
 function getPathAmounts() {
