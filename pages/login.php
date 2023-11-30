@@ -56,7 +56,7 @@ if (isset($_COOKIE['loggedIn'])) {
         <input type="text" name="email" id="email">
 
         <label for="password">Password: </label>
-        <input type="text" name="password" id="password">
+        <input type="password" name="password" id="password">
 
         <div class="error-message">
             <p id="error" class="error"></p> 
@@ -67,8 +67,10 @@ if (isset($_COOKIE['loggedIn'])) {
 
     <script>
     const logout = () => {
-        console.log("HELLO THERE")
-        document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "email=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "userId=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
     }
     </script>
 </body>

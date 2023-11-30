@@ -2,7 +2,28 @@
     // if there is a query string in the URL (?loggedin=true), it will set 2 cookies for the entire site:
     // The users email, and a loggedIn=true, which will be used to keep the site facing a logged in user
     if (!empty($_GET)) {
+        $dbServerName = "localhost";
+        $dbUsername = "root";
+        $dbPassword = "";
+        $dbName = "project";
+        $connection = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+
         setcookie("loggedIn", true, time() + 3600, '/');
+
+        $sql = 'SELECT * FROM users';
+        
+        $result = mysqli_query($connection, $sql);
+        $resultCheck = mysqli_num_rows($result);
+
+        if ($resultCheck > 0) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                if ($row['emailAddress'] == $_COOKIE['email'])  {
+                    setcookie('userId', $row['id'], time()+30*1000, '/');
+                }
+            }
+            
+        }
+
     }
 
     // include needs to be after the if statement above
@@ -59,7 +80,7 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
                 if (showResources($i + 1) == null) {
                     continue;
                 } else {
-                    showResources($i + 1);
+                    showResources($i);
                 }
             }
         ?>

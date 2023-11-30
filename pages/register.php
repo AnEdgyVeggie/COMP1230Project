@@ -90,8 +90,12 @@ if (isset($_COOKIE['loggedIn'])) {
 
     <script>
     const logout = () => {
-        console.log("HELLO THERE")
-        document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        <script>
+        const logout = () => {
+            document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "email=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        document.cookie = "userId=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        }
     }
     </script>
 </body>

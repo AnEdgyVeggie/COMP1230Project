@@ -2,15 +2,19 @@
 // Push resources function.
 function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResources, $pathId = 1) {
     // DB info.
-    $dbServername = "localhost";
+    $dbServerName = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
-
-    // Ethan's database
     $dbName = "project";
 
+    // GBLearn
+    // $dbServerName = 'localhost:3306';
+    // $dbUsername = 'f3443253_amandagurney';
+    // $dbPassword = 'password';
+    // $dbName = 'f3443253_project';
+
     // Connection info.
-    $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+    $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
     // Separate elements into comma separated list.
     $resourceString = implode(',', $pathResources);
@@ -115,15 +119,19 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
 // Show resources function.
 function showResources($pathId) {
     // DB info.
-    $dbServername = "localhost";
+    $dbServerName = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
-
-    // Ethan's database
     $dbName = "project";
 
+    // GBLearn
+    // $dbServerName = 'localhost:3306';
+    // $dbUsername = 'f3443253_amandagurney';
+    // $dbPassword = 'password';
+    // $dbName = 'f3443253_project';
+
     // Connection info.
-    $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+    $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
     // Queries.
     $sqlSelectPaths =  "SELECT * FROM paths p 
@@ -150,22 +158,11 @@ function showResources($pathId) {
             // Path description.
             $givenPathDesc = $row['path_desc'];
 
-<<<<<<< HEAD
-        // Path description.
-        $givenPathDesc = $row['path_desc'];
-
-        // ids (for deletion).
-        $givenUserId = $row['user_id'];
-        $givenPathId = $row['path_id'];
-        $givenResourceId = $row['resource_id'];
-    
-=======
             // ids (for deletion).
             $givenUserId = $row['user_id'];
             $givenPathId = $row['path_id'];
             $givenResourceId = $row['resource_id'];
     }
->>>>>>> 09262f9624788d7b36774883b67d7ba06fd05332
 
     // Likes handling
     $sqlSelectLikes = "SELECT * FROM resource_likes rl
@@ -240,26 +237,27 @@ function showResources($pathId) {
                 <input type='text' name='resourceList' id='resourceList' value='$resourceString' hidden='true'>
                 <input type='submit' name='edit' value='Edit Path' class='userSubmitOptions'>
             </form>
-<<<<<<< HEAD
-             ";
-        }}
-=======
             ";
         }
->>>>>>> 09262f9624788d7b36774883b67d7ba06fd05332
     echo "</div>";
     }
 }
 // Delete path function.
 function deletePath($pathId, $resourceId) {
         // DB info.
-        $dbServername = "localhost";
+        $dbServerName = "localhost";
         $dbUsername = "root";
         $dbPassword = "";
         $dbName = "project";
 
+        //GBLearn
+        // $dbServerName = 'localhost:3306';
+        // $dbUsername = 'f3443253_amandagurney';
+        // $dbPassword = 'password';
+        // $dbName = 'f3443253_project';
+
         // Connection info.
-        $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+        $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
         // Sql queries.
         $sqlDeletePath = "DELETE FROM paths WHERE path_id = $pathId;";
@@ -273,14 +271,18 @@ function deletePath($pathId, $resourceId) {
 }
 // Get amount of paths to display on learning paths page.
 function getPathAmounts() {
-    $dbServername = "localhost";
+    $dbServerName = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
-
-    // Ethan's database
     $dbName = "project";
 
-            $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+    //GBLearn
+    // $dbServerName = 'localhost:3306';
+    // $dbUsername = 'f3443253_amandagurney';
+    // $dbPassword = 'password';
+    // $dbName = 'f3443253_project';
+
+            $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
             // Sql query.
             $sqlCount = "SELECT COUNT(path_id) as total FROM paths;";
@@ -292,17 +294,20 @@ function getPathAmounts() {
 // Edit path.
 function getExistingValues($pathId) {
     // DB info.
-    $dbServername = "localhost";
+    $dbServerName = "localhost";
     $dbUsername = "root";
     $dbPassword = "";
-
-    // Ethan's database
     $dbName = "project";
-    // Jay's database
-    //$dbName = "learning_paths";
+
+    //GBLearn
+    // $dbServerName = 'localhost:3306';
+    // $dbUsername = 'f3443253_amandagurney';
+    // $dbPassword = 'password';
+    // $dbName = 'f3443253_project';
+
 
     // Connection info.
-    $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+    $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
     // Query to grab pre-existing info.
     $prevInfo = "SELECT * FROM paths p 
@@ -379,17 +384,19 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
 // Get number of resources in specified path.
 function resourceCount($pathId) {
         // DB info.
-        $dbServername = "localhost";
+        $dbServerName = "localhost";
         $dbUsername = "root";
         $dbPassword = "";
-    
-        // Ethan's database
         $dbName = "project";
-    
-    
+
+        //GBLearn
+        // $dbServerName = 'localhost:3306';
+        // $dbUsername = 'f3443253_amandagurney';
+        // $dbPassword = 'password';
+        // $dbName = 'f3443253_project';
     
         // Connection info.
-        $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+        $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
     
         // Queries.
         $sqlSelectPaths =  "SELECT * FROM paths p 
