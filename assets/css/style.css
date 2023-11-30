@@ -25,6 +25,7 @@ header {
     width: 80%;
 }
 
+
 nav {
     display: flex;
     justify-content: space-between;
@@ -37,7 +38,7 @@ nav {
 }
 a {
     color: rgb(2, 158, 93);
-
+    cursor: pointer;
 }
 label, span {
     color: rgb(2, 158, 93);

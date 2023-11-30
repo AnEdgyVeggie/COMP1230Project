@@ -15,25 +15,10 @@ include_once("../assets\php\databaseHandler.php");
 <body >
 
 <?php
-if (isset($_COOKIE['loggedIn'])) {
-
-   echo  '<header>
-            <nav>
-                <span>
-                    <a href="learningPaths.php">Learning Path HTML</a>|
-                    <a href="../index.php">Home</a>
-                </span>
-                <span id="login">
-                    <a onclick="logout();" href="" >Logout</a>
-                </span>
-            </nav>        
-        </header>';
-
-} else {
     echo '<header>
     <nav>
         <span>
-            <a href="learningPaths.php">Learning Path HTML</a>|
+            <a href="learningPaths.php">Learning Paths</a>|
             <a href="../index.php">Home</a>
         </span>
         <span id="login">
@@ -42,11 +27,7 @@ if (isset($_COOKIE['loggedIn'])) {
         </span>
     </nav>        
   </header>';
-}
 
-?>
-
-    <?php
         if (!empty($_GET)) {
             echo '<span>Registration Complete! Please login with your credentials</span>';
         }
@@ -64,14 +45,5 @@ if (isset($_COOKIE['loggedIn'])) {
         
         <button type="button" onclick="getFormValues('login')">LOG IN</button>
     </form>
-
-    <script>
-    const logout = () => {
-            document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        document.cookie = "email=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        document.cookie = "userId=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        }
-    }
-    </script>
 </body>
 </html>

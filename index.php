@@ -21,7 +21,7 @@ if (isset($_COOKIE['loggedIn'])) {
                     <a href="pages/userProfile.php">Profile</a>
                 </span>
                 <span id="login">
-                    <a onclick="logout();" href="" >Logout</a>
+                    <a onclick="logout();">Logout</a>
                 </span>
             </nav>        
         </header>';
@@ -30,7 +30,7 @@ if (isset($_COOKIE['loggedIn'])) {
     echo '<header>
     <nav>
         <span>
-            <a href="pages/learningPaths.php">Learning Path HTML</a>|
+            <a href="pages/learningPaths.php">Learning Paths</a>|
             <a href="">Home</a>
         </span>
         <span id="login">
@@ -74,9 +74,10 @@ if (isset($_COOKIE['loggedIn'])) {
 </article>
 <script>
     const logout = () => {
-        document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        document.cookie = "email=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
-        document.cookie = "userId=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+        location.href = "login.php";
+            document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "email=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "userId=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
     }
     </script>
 </body>

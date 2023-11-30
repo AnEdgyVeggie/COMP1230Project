@@ -17,7 +17,8 @@
                         <span>
                             <a href="learningPaths.php">Learning Paths</a>|
                             <a href="createPath.php">Create a Learning Path</a>|
-                            <a href="../index.php">Home</a>
+                            <a href="../index.php">Home</a>|
+                            <a href="pages/userProfile.php">Profile</a>
                         </span>
                         <span id="login">
                             <a onclick="logout();">Logout</a>
@@ -29,7 +30,7 @@
             echo '<header>
             <nav>
                 <span>
-                    <a href="learningPaths.php">Learning Path HTML</a>|
+                    <a href="learningPaths.php">Learning Paths</a>|
                     <a href="../index.php">Home</a>
                 </span>
                 <span id="login">
@@ -63,5 +64,14 @@
         <a href="learningPaths.php"><input type="submit"></a>
     </form>
     
+    <script>
+    const logout = () => {
+        location.href = "login.php";
+            document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "email=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+            document.cookie = "userId=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    }
+    </script>
+
 </body>
 </html>

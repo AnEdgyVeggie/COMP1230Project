@@ -26,37 +26,18 @@ echo '
         <script src="../assets/js/userProfile.js" defer></script>
         <title>User Profile</title>
     </head>';
-    if (isset($_COOKIE['loggedIn'])) {
-
         echo  '<header>
                  <nav>
                      <span>
-                         <a href="learningPaths.php">Learning Path HTML</a>|
-                         <a href="../index.php">Home</a>
+                         <a href="learningPaths.php">Learning Paths</a>|
+                         <a href="../index.php">Home</a>|
+                         <a href="">Profile</a>
                      </span>
                      <span id="login">
                          <a onclick="logout();" >Logout</a>
                      </span>
                  </nav>        
              </header>';
-     
-     } else {
-         echo '<header>
-         <nav>
-             <span>
-                 <a href="learningPaths.php">Learning Path HTML</a>|
-                 <a href="../index.php">Home</a>
-             </span>
-             <span id="login">
-                 <a href="">Register</a>|
-                 <a href="login.php">Login</a>
-             </span>
-         </nav>        
-       </header>';
-     }
-
-
-
 echo '<body>
         <div id="userHeading">
             <img id="profilePic" src="../assets/photos/default.jpg" alt="user image" width="240px" height="240px">
