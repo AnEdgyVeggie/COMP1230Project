@@ -194,52 +194,64 @@ function showResources($pathId) {
                 $display = $likes[$i];
             }
 
-            echo "<p>Resource " . ($i + 1) . ": " . $resourceArray[$i] . " Likes ($display)</p>
-            
-            <form action='../assets/php/likePath.php' method='post' class='userFormOptions'>
-                <input type='text' name='resource$i' value='" . $resourceArray[$i] . "' hidden='true'>
-                <input type='text' name='resourceList' value='" . $resourceString . "' hidden='true'>
-                <input type='text' name='pathId' value='$givenPathId' hidden='true'>
-                <input type='submit' name='$i', value='Like', class='userSubmitOptions'>
-            </form>
-        <br>";
+            echo "<p>Resource " . ($i + 1) . ": " . $resourceArray[$i] . " Likes ($display)</p>";
+
+            if (isset($_COOKIE['loggedIn'])) {
+                echo "
+                <form action='../assets/php/likePath.php' method='post' class='userFormOptions'>
+                    <input type='text' name='resource$i' value='" . $resourceArray[$i] . "' hidden='true'>
+                    <input type='text' name='resourceList' value='" . $resourceString . "' hidden='true'>
+                    <input type='text' name='pathId' value='$givenPathId' hidden='true'>
+                    <input type='submit' name='$i', value='Like', class='userSubmitOptions'>
+                </form>
+                ";
+            }
         }
 
-    echo "
-        <form action='../assets/php/pathForm.php' method='post' class='userFormOptions'>
-            <input type='text' name='path_name' value='" . $givenPathName . "' hidden='true'>
-            <input type='text' name='path_desc' value='" . $givenPathDesc . "' hidden='true'>
-            <input type='text' name='resourceList' value='" . $resourceString . "' hidden='true'>
-            <input type='text' name='path_user' value='$givenUserName' hidden='true'>
-            <input type='submit' name='clone' value='Clone' class='userSubmitOptions'>
-        </form>
-        ";
-    echo "
-        <form action='../assets/php/pathShare.php' method='post' class='userFormOptions'>
-        <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
-        <input type='submit' name='share' value='Share' class='userSubmitOptions'>
-        </form>
-        ";
+        if (isset($_COOKIE['loggedIn'])) {
+            echo "                
+                <ul class='formList'>
+                    <li>
+                        <form action='../assets/php/pathForm.php' method='post' class='userFormOptions'>
+                            <input type='text' name='path_name' value='" . $givenPathName . "' hidden='true'>
+                            <input type='text' name='path_desc' value='" . $givenPathDesc . "' hidden='true'>
+                            <input type='text' name='resourceList' value='" . $resourceString . "' hidden='true'>
+                            <input type='text' name='path_user' value='$givenUserName' hidden='true'>
+                            <input type='submit' name='clone' value='Clone' class='userSubmitOptions'>
+                        </form>
+                    </li>
+                    <li>
+                        <form action='../assets/php/pathShare.php' method='post' class='userFormOptions'>
+                            <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
+                            <input type='submit' name='share' value='Share' class='userSubmitOptions'>
+                        </form>
+                    </li>
+            ";
+        }
 
         // If user owns the path, display delete / edit options.
         if ($_COOKIE['userId'] == $givenUserId) {
             echo "
-            <form action='../assets/php/confirmDelete.php' method='post' class='userFormOptions'>
-                <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
-                <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
-                <input type='submit' name='delete' value='Delete Path' class='userSubmitOptions'>
-            </form>";
-
-            echo "
-            <form action='../assets/php/editPaths.php' method='post' class='userFormOptions'>
-                <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
-                <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
-                <input type='text' name='resourceList' id='resourceList' value='$resourceString' hidden='true'>
-                <input type='submit' name='edit' value='Edit Path' class='userSubmitOptions'>
-            </form>
+            <li>
+                <form action='../assets/php/confirmDelete.php' method='post' class='userFormOptions'>
+                    <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
+                    <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
+                    <input type='submit' name='delete' value='Delete Path' class='userSubmitOptions'>
+                </form>
+            </li>
+            <li>
+                <form action='../assets/php/editPaths.php' method='post' class='userFormOptions'>
+                    <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
+                    <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
+                    <input type='text' name='resourceList' id='resourceList' value='$resourceString' hidden='true'>
+                    <input type='submit' name='edit' value='Edit Path' class='userSubmitOptions'>
+                </form>
+            </li>
             ";
         }
-    echo "</div>";
+    echo "
+        <ul>
+    </div>";
     }
 }
 // Delete path function.
@@ -345,19 +357,19 @@ function getExistingValues($pathId) {
 
 // Shows the edit menu that will redirect to the pathForm page for editing.
 function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
-        $resourceList = implode(',', $resourceArray);
-        // Echo out the createPath format with the filled pre-existing info.
-        echo "
-        <link rel='stylesheet' href='../css/style.css'>
-        <script src='../js/learning-path.js' defer></script>
-        <form method='post' action='pathForm.php' id='learning-path-form'>
-        <label for='path_name'>Learning Path Name</label>
-        <input type='text' id='path_name' name='path_name' value='". $infoArray['existingPathName'] . "'>
+    $resourceList = implode(',', $resourceArray);
+    // Echo out the createPath format with the filled pre-existing info.
+    echo "
+    <link rel='stylesheet' href='../css/style.css'>
+    <script src='../js/learning-path.js' defer></script>
+    <form method='post' action='pathForm.php' id='learning-path-form'>
+    <label for='path_name'>Learning Path Name</label>
+    <input type='text' id='path_name' name='path_name' value='". $infoArray['existingPathName'] . "'>
 
-        <label for='path_desc'>Path Description</label>
-        <textarea id='path_desc' name='path_desc' cols='30' rows='10'>" . $infoArray['existingPathDesc'] . "</textarea>
-        <label for='given_resources' id='given_resources' name='given_resources'>Resources</label>
-        ";
+    <label for='path_desc'>Path Description</label>
+    <textarea id='path_desc' name='path_desc' cols='30' rows='10'>" . $infoArray['existingPathDesc'] . "</textarea>
+    <label for='given_resources' id='given_resources' name='given_resources'>Resources</label>
+    ";
         // Loop to output proper amount of resources.
         for ($i = 0; $i < count($resourceArray); $i++)  {
             echo "
@@ -376,7 +388,7 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
         <input type='text' name='pathId' value='$pathId' hidden='true'>
         <br>
         <br>
-        <input type='submit' value='Edit'></input>
+        <input type='submit' value='Edit' class='userSubmitOptions'></input>
     </form>
     ";
 }

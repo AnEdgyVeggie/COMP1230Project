@@ -11,6 +11,6 @@ echo "
         <input type='password' name='confirmPassword'>
         <input type='text' name='pathId' hidden='true' value='$confirmPathId'>
         <input type='text' name='resourceId' hidden='true' value='$confirmResourceId'>
-        <input type='submit' name='confirmDeleteSubmit' value='Submit'>
+        <input type='submit' name='confirmDeleteSubmit' value='Submit' id='confirmDeleteSubmit'>
     </form>
 ";

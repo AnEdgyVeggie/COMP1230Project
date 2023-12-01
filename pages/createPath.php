@@ -61,7 +61,7 @@
         <input type="text" id='edit' name='edit' value='false' hidden='true'>
         <br>
         <br>
-        <a href="learningPaths.php"><input type="submit"></a>
+        <input type="submit" id='create' class='userSubmitOptions'>
     </form>
     
     <script>
