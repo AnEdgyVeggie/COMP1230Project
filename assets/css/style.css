@@ -20,11 +20,11 @@ body {
     min-height: 97vh;
     width: 100%;
     font-family: 'Raleway';
+    border: 1px solid blue;
 }
 header {
     width: 80%;
 }
-
 
 nav {
     display: flex;
@@ -55,7 +55,7 @@ form {
     grid-template-columns: 500px;
     font-size: 20px;
     box-shadow: 0px 0px 10px black;
-
+    margin-top: 100px;
     padding: 50px;
 }
 .fields {
@@ -70,11 +70,6 @@ form {
     font-size: 14px;
     text-align: center;
 }
-.fields {
-    display: grid;
-    grid-template-columns: 200px 300px;
-}
-
 
 input {
     height: 25px;
@@ -83,6 +78,9 @@ input {
 button {
     width: 100px;
     height: 25px;
+    background-color: white;
+    color: rgb(2, 158, 93);
+    font-weight: bolder;
 }
 .error {
     color: red;

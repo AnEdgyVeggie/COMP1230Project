@@ -1,6 +1,4 @@
-<?php
-include_once("assets/php/databaseHandler.php");
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -74,7 +72,7 @@ if (isset($_COOKIE['loggedIn'])) {
 </article>
 <script>
     const logout = () => {
-        location.href = "login.php";
+        location.href = "pages/login.php";
             document.cookie = "loggedIn=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             document.cookie = "email=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
             document.cookie = "userId=''; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";

@@ -79,7 +79,7 @@ include_once("../../assets/php/databaseHandler.php");
                 && $row['password'] == $_COOKIE['password']){
                     $loginSuccess = true;
                     echo '<script> 
-                    location.href = "../learningPaths.php?loggedIn=true";
+                    location.href = "../userProfile.php?loggedIn=true";
                     </script>';
                     setcookie('userId', $row['id'], time()+30*1000, '/');
                 }

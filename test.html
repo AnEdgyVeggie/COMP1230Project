@@ -29,23 +29,27 @@ if (!empty($_GET)) {
 }
 
 include_once("../assets/php/databaseHandler.php");
-$id = $_COOKIE['userId'];
-$sql = "SELECT * FROM users WHERE id = $id";
+
+$sql = "SELECT * FROM users";
         
 $result = mysqli_query($connection, $sql);
 
-$firstName; $lastName; $email; $aboutMe; $image; 
-
+$firstName; $lastName; $email; $aboutMe; $id; 
 
 while ($row = mysqli_fetch_assoc($result)) { 
+    if ($row['id'] == $_COOKIE['userId']) {
         $firstName = $row['firstName'];
         $lastName = $row['lastName'];
         $email = $row['emailAddress'];
         $aboutMe = $row['aboutMe'];
-        $image = $row['image'];
+        $id = $row['id'];
+    }
 }
 
+if (file_exists("uploadedImage"))
+{
 
+}
 echo '
     <!DOCTYPE html>
     <html lang="en">
@@ -72,22 +76,12 @@ echo '
              // PERSONAL HEADER
 echo '<body>
         <div id="userHeading">
-            <div id="picture">';
-            if ($image == null) {
-                echo '<img id="profilePic" src="../assets/photos/default.jpg" alt="user image" width="240px" height="240px">';
-            } else {
-                $path = $image;
-                $type = pathinfo($path, PATHINFO_EXTENSION);
-                $data = file_get_contents($path);
-                $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
-
-                echo '<img  id="profilePic" src="'.$base64.'" alt="user image" width="240px" height="240px"/>';
-
-                }
-            echo '<form id="input-image" method="POST" action="../assets/php/submitPhoto.php">
+            <div id="picture">
+                <img id="profilePic" src="../assets/photos/default.jpg" alt="user image" width="240px" height="240px">
+                <form id="input-image" method="POST">
                     <label>Change profile picture</label>
-                    <input type="file" id="file" accept="image/jpeg" name="image">
-                    <textarea id="image-text" name="imageText"></textarea>
+                    <input type="file" id="file" accept="image/jpeg">
+                    <input type="text" readonly id="image-text">
                     <button type="submit">Submit</button>
                 </form>
             </div>
@@ -96,6 +90,7 @@ echo '<body>
         </div>
 
         <script>
+            const handleUpload = () => {
             let inputDiv = document.querySelector("#input-image"),
             input = document.querySelector("#input-image input");
 
@@ -104,17 +99,16 @@ echo '<body>
                 console.log(file);
                 const reader = new FileReader();
 
-
                 reader.addEventListener("load", () =>{ 
                     console.log(reader.result);
-                    document.querySelector("#image-text").innerHTML = reader.result;
+                    document.querySelector("#image-text").value = reader.result;
                 })
 
                 reader.readAsDataURL(file);
 
 
             })
-      
+        }
         </script>
 ';
 
