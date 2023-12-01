@@ -22,7 +22,7 @@ if ($confirmPassword == $password['password']) {
     echo "
     <form action='../../pages/learningPaths.php' method='post'>
         <label for='return'>Return to Learning Paths?</label>
-        <input type='submit' value='Return to Learning Paths'>
+        <input type='submit' value='Return to Learning Paths' id='return'>
     </form>
 ";
 } else { // If password is incorrect...
@@ -32,7 +32,7 @@ if ($confirmPassword == $password['password']) {
     echo "
         <form action='../../pages/learningPaths.php' method='post'>
             <label for='return'>Return to Learning Paths?</label>
-            <input type='submit' value='Return to Learning Paths'>
+            <input type='submit' value='Return to Learning Paths' id='return'>
         </form>
     ";
 }

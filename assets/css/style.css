@@ -114,7 +114,7 @@ input {
 
 #pathsGrid {
     display: grid;
-    grid-template-columns: 500px 500px 500px;
+    grid-template-columns: 550px 550px 550px;
     gap: 10px;
     padding: 5px;
 }
@@ -128,12 +128,38 @@ input {
     margin: 2px;
 }
 .userFormOptions {
-    display: block !important;
-    border: none !important;
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    margin: 5px;
     padding: 0px !important;
 }
 .userSubmitOptions {
     width: 100px;
+}
+.userSubmitOptions:hover {
+    background-color: rgb(2, 158, 93);
+}
+.formList {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+}
+.formList > li {
+    display: inline-block;
+}
+
+#confirmDeleteSubmit:hover {
+    background-color: rgb(2, 158, 93);
+}
+#return:hover {
+    background-color: rgb(2, 158, 93);
+}
+#add-button:hover {
+    background-color: rgb(2, 158, 93);
+}
+#create {
+    margin: 0 auto;
 }
 
 #append > input {
