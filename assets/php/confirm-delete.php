@@ -6,7 +6,7 @@ $confirmResourceId = $_POST['resourceId'];
 // Confirm password for extra safety measure against maliciously deleting paths.
 echo "
     <link rel='stylesheet' href='../css/style.css'>
-    <form action='deletePaths.php' method='post'>
+    <form action='delete-paths.php' method='post'>
         <label for='confirmPassword'>Enter your password:</label>
         <input type='password' name='confirmPassword'>
         <input type='text' name='pathId' hidden='true' value='$confirmPathId'>

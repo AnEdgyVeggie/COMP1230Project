@@ -1,5 +1,5 @@
 <?php
-include_once("../../assets/php/databaseHandler.php");
+include_once("../../assets/php/database-handler.php");
 ?>
 
 <!DOCTYPE html>
@@ -63,7 +63,7 @@ include_once("../../assets/php/databaseHandler.php");
             mysqli_query($connection, $sql);
 
         }
-
+        
     } 
 
     if (empty($_GET)) {
@@ -79,7 +79,7 @@ include_once("../../assets/php/databaseHandler.php");
                 && $row['password'] == $_COOKIE['password']){
                     $loginSuccess = true;
                     echo '<script> 
-                    location.href = "../userProfile.php?loggedIn=true";
+                    location.href = "../user-profile.php?loggedIn=true";
                     </script>';
                     setcookie('userId', $row['id'], time()+30*1000, '/');
                 }

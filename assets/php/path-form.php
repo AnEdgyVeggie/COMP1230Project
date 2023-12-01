@@ -1,8 +1,8 @@
 <?php
-include('pathFunctions.php');
+include('path-functions.php');
 // Protects page from unwanted HTML code injections.
 htmlspecialchars($_SERVER['PHP_SELF']);
-echo "<link rel='stylesheet' href='../css/style.css'>";
+
 // Set variables to global.
 global $pathName, $pathUser, $pathDescription, $pathResources;
 
@@ -54,7 +54,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         }
 
         // Relocate page.
-        header('Location: ../../pages/learningPaths.php');
+        header('Location: ../../pages/learning-paths.php');
     } else if ($_POST['clone'] == 'Clone') {
         $pathName = $_POST['path_name'];
         $pathUser = $_COOKIE['userId'];
@@ -64,6 +64,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $resourceArray = explode(',', $resourceList);
 
         pushResources(false, $pathUser, $pathName, $pathDescription, $resourceArray);
-        header('Location: ../../pages/learningPaths.php');
+        header('Location: ../../pages/learning-paths.php');
     }
+
 }
+echo "<link rel='stylesheet' href='../css/style.css'>";

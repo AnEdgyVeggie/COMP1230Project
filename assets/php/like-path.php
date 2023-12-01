@@ -1,5 +1,5 @@
 <?php
-include_once('pathFunctions.php');
+include_once('path-functions.php');
 // DB info.
 $dbServername = "localhost";
 $dbUsername = "root";
@@ -35,4 +35,4 @@ $sqlLikequery = "UPDATE resource_likes SET likes = (likes+1)
                  WHERE resource_index = $postedIndex AND path_id = $pathId;";
 
 mysqli_query($conn, $sqlLikequery);
-header('Location: ../../pages/learningPaths.php');
+header('Location: ../../pages/learning-paths.php');

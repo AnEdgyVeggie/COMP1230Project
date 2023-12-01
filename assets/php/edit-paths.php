@@ -1,6 +1,6 @@
 <?php 
 ini_set('display_errors', 1);
-include('pathFunctions.php');
+include('path-functions.php');
 
 if (isset($_POST['edit'])) {
     $pathId = $_POST['pathId'];

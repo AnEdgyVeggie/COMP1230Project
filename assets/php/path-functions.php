@@ -186,7 +186,7 @@ function showResources($pathId) {
 
             if (isset($_COOKIE['loggedIn'])) {
                 echo "
-                <form action='../assets/php/likePath.php' method='post' class='userFormOptions'>
+                <form action='../assets/php/like-path.php' method='post' class='userFormOptions'>
                     <input type='text' name='resource$i' value='" . $resourceArray[$i] . "' hidden='true'>
                     <input type='text' name='resourceList' value='" . $resourceString . "' hidden='true'>
                     <input type='text' name='pathId' value='$givenPathId' hidden='true'>
@@ -200,7 +200,7 @@ function showResources($pathId) {
             echo "                
                 <ul class='formList'>
                     <li>
-                        <form action='../assets/php/pathForm.php' method='post' class='userFormOptions'>
+                        <form action='../assets/php/path-form.php' method='post' class='userFormOptions'>
                             <input type='text' name='path_name' value='" . $givenPathName . "' hidden='true'>
                             <input type='text' name='path_desc' value='" . $givenPathDesc . "' hidden='true'>
                             <input type='text' name='resourceList' value='" . $resourceString . "' hidden='true'>
@@ -209,7 +209,7 @@ function showResources($pathId) {
                         </form>
                     </li>
                     <li>
-                        <form action='../assets/php/pathShare.php' method='post' class='userFormOptions'>
+                        <form action='../assets/php/path-share.php' method='post' class='userFormOptions'>
                             <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
                             <input type='submit' name='share' value='Share' class='userSubmitOptions'>
                         </form>
@@ -221,14 +221,14 @@ function showResources($pathId) {
         if ($_COOKIE['userId'] == $givenUserId) {
             echo "
             <li>
-                <form action='../assets/php/confirmDelete.php' method='post' class='userFormOptions'>
+                <form action='../assets/php/confirm-delete.php' method='post' class='userFormOptions'>
                     <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
                     <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
                     <input type='submit' name='delete' value='Delete Path' class='userSubmitOptions'>
                 </form>
             </li>
             <li>
-                <form action='../assets/php/editPaths.php' method='post' class='userFormOptions'>
+                <form action='../assets/php/edit-paths.php' method='post' class='userFormOptions'>
                     <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
                     <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
                     <input type='text' name='resourceList' id='resourceList' value='$resourceString' hidden='true'>
@@ -320,7 +320,7 @@ function getExistingValues($pathId) {
             $resourceArray
         )
     );
-    // Return arrays for use in editPaths.php.
+    // Return arrays for use in edit-paths.php.
     return [$infoArray, $pathId];
 }
 
@@ -331,9 +331,9 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
     echo "
     <link rel='stylesheet' href='../css/style.css'>
     <script src='../js/learning-path.js' defer></script>
-    <form method='post' action='pathForm.php' id='learning-path-form'>
+    <form method='post' action='path-form.php' id='learning-path-form'>
     <label for='path_name'>Learning Path Name</label>
-    <input type='text' id='path_name' name='path_name' value='". $infoArray['existingPathName'] . "'>
+    <input type='text' id='path_name' name='path_name' value='" . $infoArray['existingPathName'] . "'>
 
     <label for='path_desc'>Path Description</label>
     <textarea id='path_desc' name='path_desc' cols='30' rows='10'>" . $infoArray['existingPathDesc'] . "</textarea>
