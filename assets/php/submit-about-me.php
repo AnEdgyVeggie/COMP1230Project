@@ -1,6 +1,6 @@
 <?php
 
-include_once("databaseHandler.php");
+include_once("database-handler.php");
 
 
 $aboutMe;
@@ -17,6 +17,6 @@ $sql = "UPDATE Users SET aboutMe = '$aboutMe' WHERE users.id = $userId;";
         
 mysqli_query($connection, $sql);
 
-header('Location: ../../pages/userProfile.php');
+header('Location: ../../pages/user-profile.php');
 
 ?>

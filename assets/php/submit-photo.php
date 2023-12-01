@@ -2,7 +2,7 @@
 $image;
 
 
-include_once("databaseHandler.php");
+include_once("database-handler.php");
 
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
@@ -15,5 +15,5 @@ $sql = "UPDATE Users SET image = '$image' WHERE users.id = $userId;";
         
 mysqli_query($connection, $sql);
 
-header('Location: ../../pages/userProfile.php');
+header('Location: ../../pages/user-profile.php');
 ?>

@@ -25,44 +25,40 @@ if (!empty($_GET)) {
         }
         
     }
-    header('Location: userProfile.php');
+    header('Location: user-profile.php');
 }
 
-include_once("../assets/php/databaseHandler.php");
-
-$sql = "SELECT * FROM users";
+include_once("../assets/php/database-handler.php");
+$id = $_COOKIE['userId'];
+$sql = "SELECT * FROM users WHERE id = $id";
         
 $result = mysqli_query($connection, $sql);
 
-$firstName; $lastName; $email; $aboutMe; $id; 
+$firstName; $lastName; $email; $aboutMe; $image; 
+
 
 while ($row = mysqli_fetch_assoc($result)) { 
-    if ($row['id'] == $_COOKIE['userId']) {
         $firstName = $row['firstName'];
         $lastName = $row['lastName'];
         $email = $row['emailAddress'];
         $aboutMe = $row['aboutMe'];
-        $id = $row['id'];
-    }
+        $image = $row['image'];
 }
 
-if (file_exists("uploadedImage"))
-{
 
-}
 echo '
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../assets/css/userProfile.css">
+        <link rel="stylesheet" href="../assets/css/user-profile.css">
         <title>User Profile</title>
     </head>';
-        echo  '<header>
+        echo '<header>
                  <nav>
                      <span>
-                         <a href="learningPaths.php">Learning Paths</a>|
+                         <a href="learning-paths.php">Learning Paths</a>|
                          <a href="../index.php">Home</a>|
                          <a href="">Profile</a>
                      </span>
@@ -76,21 +72,39 @@ echo '
              // PERSONAL HEADER
 echo '<body>
         <div id="userHeading">
-            <div id="picture">
-                <img id="profilePic" src="../assets/photos/default.jpg" alt="user image" width="240px" height="240px">
-                <form id="input-image" method="POST">
+            <div id="picture-form">';
+            
+            if ($image == null) {
+                echo '<img id="profilePic" src="../assets/photos/default.jpg" alt="user image" width="240px" height="240px">';
+            } else {
+                $path = $image;
+                $type = pathinfo($path, PATHINFO_EXTENSION);
+                $data = file_get_contents($path);
+                $base64 = 'data:image/' . $type . ';base64,' . base64_encode($data);
+
+                echo '<img  id="profilePic" src="'.$base64.'" alt="user image" width="240px" height="240px"/>';
+
+                }
+
+                # the text area is hidden from view as it is only used to send image data to the back end without using
+                # additional libraries
+
+            echo '<form id="input-image" method="POST" action="../assets/php/submit-photo.php">
                     <label>Change profile picture</label>
-                    <input type="file" id="file" accept="image/jpeg">
-                    <input type="text" readonly id="image-text">
+                    <div id="form-layout">
+                    <input type="file" id="file" accept="image/jpeg" name="image">
+                    <textarea id="image-text" name="imageText"></textarea> 
                     <button type="submit">Submit</button>
+                    </div>
+                    <span id="warning">images can not exceed 675Kbs</apan>
                 </form>
+
             </div>
 
             <h1> ' . $firstName . " " . $lastName . '</h1>
         </div>
 
         <script>
-            const handleUpload = () => {
             let inputDiv = document.querySelector("#input-image"),
             input = document.querySelector("#input-image input");
 
@@ -99,39 +113,24 @@ echo '<body>
                 console.log(file);
                 const reader = new FileReader();
 
+
                 reader.addEventListener("load", () =>{ 
                     console.log(reader.result);
-                    document.querySelector("#image-text").value = reader.result;
+                    document.querySelector("#image-text").innerHTML = reader.result;
                 })
 
                 reader.readAsDataURL(file);
 
 
             })
-        }
+      
         </script>
 ';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         // ABOUT ME
         if ($aboutMe == "") {
             echo '
-            <form id="about-me" method="POST" action="../assets/php/submitAboutMe.php">
+            <form id="about-me" method="POST" action="../assets/php/submit-about-me.php">
                 <label for="about-me">Please Enter Your About Me</label>
                 <textarea cols="80" rows="10" id="about-me" name="about-me" ></textarea>
 

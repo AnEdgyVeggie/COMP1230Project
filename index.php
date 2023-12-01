@@ -14,9 +14,9 @@ if (isset($_COOKIE['loggedIn'])) {
    echo  '<header>
             <nav>
                 <span>
-                    <a href="pages/learningPaths.php">Learning Paths</a>|
+                    <a href="pages/learning-paths.php">Learning Paths</a>|
                     <a href="index.php">Home</a>|
-                    <a href="pages/userProfile.php">Profile</a>
+                    <a href="pages/user-profile.php">Profile</a>
                 </span>
                 <span id="login">
                     <a onclick="logout();">Logout</a>
@@ -28,7 +28,7 @@ if (isset($_COOKIE['loggedIn'])) {
     echo '<header>
     <nav>
         <span>
-            <a href="pages/learningPaths.php">Learning Paths</a>|
+            <a href="pages/learning-paths.php">Learning Paths</a>|
             <a href="">Home</a>
         </span>
         <span id="login">
