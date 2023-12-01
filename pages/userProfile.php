@@ -72,7 +72,8 @@ echo '
              // PERSONAL HEADER
 echo '<body>
         <div id="userHeading">
-            <div id="picture">';
+            <div id="picture-form">';
+            
             if ($image == null) {
                 echo '<img id="profilePic" src="../assets/photos/default.jpg" alt="user image" width="240px" height="240px">';
             } else {
@@ -84,12 +85,20 @@ echo '<body>
                 echo '<img  id="profilePic" src="'.$base64.'" alt="user image" width="240px" height="240px"/>';
 
                 }
+
+                # the text area is hidden from view as it is only used to send image data to the back end without using
+                # additional libraries
+
             echo '<form id="input-image" method="POST" action="../assets/php/submitPhoto.php">
                     <label>Change profile picture</label>
+                    <div id="form-layout">
                     <input type="file" id="file" accept="image/jpeg" name="image">
-                    <textarea id="image-text" name="imageText"></textarea>
+                    <textarea id="image-text" name="imageText"></textarea> 
                     <button type="submit">Submit</button>
+                    </div>
+                    <span id="warning">images can not exceed 675Kbs</apan>
                 </form>
+
             </div>
 
             <h1> ' . $firstName . " " . $lastName . '</h1>
