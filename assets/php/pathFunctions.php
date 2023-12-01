@@ -7,12 +7,6 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
     $dbPassword = "";
     $dbName = "project";
 
-    // GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
-
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
@@ -123,12 +117,6 @@ function showResources($pathId) {
     $dbUsername = "root";
     $dbPassword = "";
     $dbName = "project";
-
-    // GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
 
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -262,12 +250,6 @@ function deletePath($pathId, $resourceId) {
         $dbPassword = "";
         $dbName = "project";
 
-        //GBLearn
-        // $dbServerName = 'localhost:3306';
-        // $dbUsername = 'f3443253_amandagurney';
-        // $dbPassword = 'password';
-        // $dbName = 'f3443253_project';
-
         // Connection info.
         $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
@@ -288,12 +270,6 @@ function getPathAmounts() {
     $dbPassword = "";
     $dbName = "project";
 
-    //GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
-
             $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
             // Sql query.
@@ -310,13 +286,6 @@ function getExistingValues($pathId) {
     $dbUsername = "root";
     $dbPassword = "";
     $dbName = "project";
-
-    //GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
-
 
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -400,12 +369,6 @@ function resourceCount($pathId) {
         $dbUsername = "root";
         $dbPassword = "";
         $dbName = "project";
-
-        //GBLearn
-        // $dbServerName = 'localhost:3306';
-        // $dbUsername = 'f3443253_amandagurney';
-        // $dbPassword = 'password';
-        // $dbName = 'f3443253_project';
     
         // Connection info.
         $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);

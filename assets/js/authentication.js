@@ -44,16 +44,16 @@ const register = (firstName, lastName, email, password, confirmPass) => {
 
 
     // // LOCALHOST
-    // document.cookie = `firstName=${firstName}; expires=${expiry.toUTCString}; path=/dashboard/comp1230/assignments/project/project/pages/loading`;
-    // document.cookie = `lastName=${lastName}; expires=${expiry.toUTCString};  path=/dashboard/comp1230/assignments/project/project/pages/loading`;
-    // document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/dashboard/comp1230/assignments/project/project/pages/loading`;
-    // document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/dashboard/comp1230/assignments/project/project/pages/loading`;
+    document.cookie = `firstName=${firstName}; expires=${expiry.toUTCString}; path=/dashboard/comp1230/assignments/project/project/pages/loading`;
+    document.cookie = `lastName=${lastName}; expires=${expiry.toUTCString};  path=/dashboard/comp1230/assignments/project/project/pages/loading`;
+    document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/dashboard/comp1230/assignments/project/project/pages/loading`;
+    document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/dashboard/comp1230/assignments/project/project/pages/loading`;
 
     // JAY MAC LOCALHOST
-    document.cookie = `firstName=${firstName}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
-    document.cookie = `lastName=${lastName}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;
-    document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;
-    document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `firstName=${firstName}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `lastName=${lastName}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/comp1230/assignments/project/pages/loading`;
+    // document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/comp1230/assignments/project/pages/loading`;
 
 
     // SERVERSIDE
@@ -73,9 +73,8 @@ const login = (email, password) => {
 
     expiry.setTime(expiry.getTime()+30* 1000);
 
-    // JAY LOGIN
     document.cookie = `email=${email}; expires=${expiry.toUTCString};  path=/`;
-    document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=/dashboard/comp1230/assignments/project/project/pages/loading`;
+    document.cookie = `password=${password}; expires=${expiry.toUTCString}; path=comp1230/assignments/project/project/pages/loading`;
 
 
     location.href = 'loading/loadingscreen.php';
