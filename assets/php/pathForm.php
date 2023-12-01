@@ -2,7 +2,7 @@
 include('pathFunctions.php');
 // Protects page from unwanted HTML code injections.
 htmlspecialchars($_SERVER['PHP_SELF']);
-echo "<link rel='stylesheet' href='../css/style.css'>";
+
 // Set variables to global.
 global $pathName, $pathUser, $pathDescription, $pathResources;
 
@@ -66,4 +66,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         pushResources(false, $pathUser, $pathName, $pathDescription, $resourceArray);
         header('Location: ../../pages/learningPaths.php');
     }
+
 }
+echo "<link rel='stylesheet' href='../css/style.css'>";

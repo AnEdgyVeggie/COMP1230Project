@@ -63,7 +63,7 @@ include_once("../../assets/php/databaseHandler.php");
             mysqli_query($connection, $sql);
 
         }
-
+        
     } 
 
     if (empty($_GET)) {
