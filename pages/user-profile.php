@@ -24,11 +24,7 @@ if (!empty($_GET)) {
     header('Location: user-profile.php');
 }
 
-<<<<<<< HEAD
 include("../assets/php/database-handler.php");
-=======
-include_once("../assets/php/database-handler.php");
->>>>>>> 03e4bac4afc9ec165bfaabc3592b9d1c8d876dad
 $id = $_COOKIE['userId'];
 $sql = "SELECT * FROM users WHERE id = $id";
         
@@ -96,10 +92,6 @@ echo '<body>
                     <textarea id="image-text" name="imageText"></textarea> 
                     <button type="submit">Submit</button>
                     </div>
-<<<<<<< HEAD
-=======
-                    <span id="warning">images can not exceed 675Kbs</apan>
->>>>>>> 03e4bac4afc9ec165bfaabc3592b9d1c8d876dad
                 </form>
 
             </div>
