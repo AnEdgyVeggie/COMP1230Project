@@ -1,12 +1,10 @@
 <?php
 include_once('path-functions.php');
 // DB info.
-$dbServername = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-
-// Ethan's database
-$dbName = "project";
+$dbServerName = "localhost:3306";
+$dbUsername = "f3479568";
+$dbPassword = "CSESmmcc4!!";//"CSESmmcc4!!";
+$dbName = "f3479568_project";
 
 // Connection info.
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);

@@ -1,18 +1,7 @@
 <?php 
 // Push resources function.
 function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResources, $pathId = 1) {
-    // DB info.
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "project";
-
-    // GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
-
+    include("../assets/php/database-handler.php");
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
@@ -118,18 +107,7 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
 }
 // Show resources function.
 function showResources($pathId) {
-    // DB info.
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "project";
-
-    // GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
-
+    include("../assets/php/database-handler.php");
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
@@ -256,18 +234,7 @@ function showResources($pathId) {
 }
 // Delete path function.
 function deletePath($pathId, $resourceId) {
-        // DB info.
-        $dbServerName = "localhost";
-        $dbUsername = "root";
-        $dbPassword = "";
-        $dbName = "project";
-
-        //GBLearn
-        // $dbServerName = 'localhost:3306';
-        // $dbUsername = 'f3443253_amandagurney';
-        // $dbPassword = 'password';
-        // $dbName = 'f3443253_project';
-
+    include("../assets/php/database-handler.php");
         // Connection info.
         $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
@@ -283,17 +250,7 @@ function deletePath($pathId, $resourceId) {
 }
 // Get amount of paths to display on learning paths page.
 function getPathAmounts() {
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "project";
-
-    //GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
-
+    include("../assets/php/database-handler.php");
             $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
             // Sql query.
@@ -305,18 +262,7 @@ function getPathAmounts() {
 
 // Edit path.
 function getExistingValues($pathId) {
-    // DB info.
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "project";
-
-    //GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
-
+    include("../assets/php/database-handler.php");
 
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -395,18 +341,7 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
 
 // Get number of resources in specified path.
 function resourceCount($pathId) {
-        // DB info.
-        $dbServerName = "localhost";
-        $dbUsername = "root";
-        $dbPassword = "";
-        $dbName = "project";
-
-        //GBLearn
-        // $dbServerName = 'localhost:3306';
-        // $dbUsername = 'f3443253_amandagurney';
-        // $dbPassword = 'password';
-        // $dbName = 'f3443253_project';
-    
+    include("../assets/php/database-handler.php");
         // Connection info.
         $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
     

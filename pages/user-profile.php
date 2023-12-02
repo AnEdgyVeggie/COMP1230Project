@@ -4,11 +4,7 @@
 // if there is a query string in the URL (?loggedin=true), it will set 2 cookies for the entire site:
 // The users email, and a loggedIn=true, which will be used to keep the site facing a logged in user
 if (!empty($_GET)) {
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "project";
-    $connection = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+    include("../assets/php/database-handler.php");
 
     setcookie("loggedIn", true, time() + 3600, '/');
 
@@ -28,7 +24,7 @@ if (!empty($_GET)) {
     header('Location: user-profile.php');
 }
 
-include_once("../assets/php/database-handler.php");
+include("../assets/php/database-handler.php");
 $id = $_COOKIE['userId'];
 $sql = "SELECT * FROM users WHERE id = $id";
         
@@ -96,7 +92,6 @@ echo '<body>
                     <textarea id="image-text" name="imageText"></textarea> 
                     <button type="submit">Submit</button>
                     </div>
-                    <span id="warning">images can not exceed 675Kbs</apan>
                 </form>
 
             </div>
