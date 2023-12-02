@@ -2,7 +2,7 @@
 
         $dbServerName = "localhost:3306";
         $dbUsername = "f3443253";
-        $dbPassword = "spunkey10"; 
+        $dbPassword = "PASSWORD"; 
         $dbName = "f3443253_project";
 
 
