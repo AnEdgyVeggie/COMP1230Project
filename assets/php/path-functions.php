@@ -170,10 +170,10 @@ function showResources($pathId) {
     // Page layout.
     echo "
         <div class='pathsGridItems'>
-            <h3>$givenPathName</h3> <br>
-            <span>Created by: $givenUserName <br>
-            $givenPathDesc <br></span>
-            <h3>Resources</h3> <br>
+            <h3>$givenPathName</h3>
+            <span><p>Created by: $givenUserName </p>
+            <p> $givenPathDesc </p></span>
+            <h3>Resources</h3>
     ";
         for ($i = 0; $i < count($resourceArray); $i++) {
             // Properly displays likes per resource.

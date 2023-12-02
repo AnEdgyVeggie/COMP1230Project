@@ -123,6 +123,7 @@ input {
     border: 2px solid white;
     padding: 10px;
     margin: 20px;
+    background-color: rgba(2, 158, 93, 0.541);
 }
 .pathsGridItems > p {
     margin: 2px;
