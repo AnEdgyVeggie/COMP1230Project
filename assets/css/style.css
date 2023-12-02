@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Raleway';
-    src: url(../fonts/Raleway.ttf);
+    src: url(../fonts/raleway.ttf);
 }
 
 html {
@@ -16,6 +16,7 @@ body {
     background-color: rgb(224, 224, 224);
     flex-direction: column;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
     min-height: 97vh;
     width: 100%;
@@ -39,14 +40,11 @@ nav {
 a {
     color: rgb(2, 158, 93);
     cursor: pointer;
+    padding: 0 20px;
+    text-decoration: none;
 }
 label, span {
     color: rgb(2, 158, 93);
-}
-
-a {
-    padding: 0 20px;
-    text-decoration: none;
 }
 
 form {
@@ -82,10 +80,7 @@ button {
     color: rgb(2, 158, 93);
     font-weight: bolder;
 }
-.error {
-    color: red;
-    margin: 30px;
-}
+
 .error {
     color: red;
     margin-top: 5px;
