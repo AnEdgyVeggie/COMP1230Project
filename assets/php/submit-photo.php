@@ -3,6 +3,10 @@ $image;
 
 
 include_once("database-handler.php");
+<<<<<<< HEAD
+=======
+
+>>>>>>> 03e4bac4afc9ec165bfaabc3592b9d1c8d876dad
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 

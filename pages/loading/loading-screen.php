@@ -79,7 +79,11 @@ include_once("../../assets/php/database-handler.php");
                 && $row['password'] == $_COOKIE['password']){
                     $loginSuccess = true;
                     echo '<script> 
+<<<<<<< HEAD:pages/loading/loading-screen.php
                     location.href = "../user-profile.php?login=true";
+=======
+                    location.href = "../user-profile.php?loggedIn=true";
+>>>>>>> 03e4bac4afc9ec165bfaabc3592b9d1c8d876dad:pages/loading/loadingScreen.php
                     </script>';
                     setcookie('userId', $row['id'], time()+30*1000, '/');
                 }
