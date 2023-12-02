@@ -1,13 +1,12 @@
 <?php
 include_once('path-functions.php');
-// DB info.
-$dbServerName = "localhost:3306";
-$dbUsername = "f3479568";
-$dbPassword = "CSESmmcc4!!";//"CSESmmcc4!!";
-$dbName = "f3479568_project";
+$dbServerName = "localhost:3306";  // this SHOULD be fine to leave
+$dbUsername = "f3443253"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+$dbPassword = "spunkey10"; // this is the password YOU USE TO LOG INTO gblearn
+$dbName = "f3443253_project"; // this is the name of the database, yours will be f3######_databaseName
 
 // Connection info.
-$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+$conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
 $pathId = $_POST['pathId'];
 $resourceString = $_POST['resourceList'];
