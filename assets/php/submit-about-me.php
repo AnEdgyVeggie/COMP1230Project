@@ -1,9 +1,8 @@
 <?php
 
-include_once("databaseHandler.php");
-
-
 $aboutMe;
+include_once("database-handler.php");
+
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -13,10 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
 $userId = $_COOKIE['userId'];
 
-$sql = "UPDATE Users SET aboutMe = '$aboutMe' WHERE users.id = $userId;";
+$sql = "UPDATE users SET aboutMe = '$aboutMe' WHERE users.id = $userId;";
         
 mysqli_query($connection, $sql);
 
-header('Location: ../../pages/userProfile.php');
+header('Location: ../../pages/user-profile.php');
+
 
 ?>

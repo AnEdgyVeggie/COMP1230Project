@@ -2,8 +2,7 @@
 $image;
 
 
-include_once("databaseHandler.php");
-
+include_once("database-handler.php");
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
@@ -11,9 +10,9 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     
 }
 $userId = $_COOKIE['userId'];
-$sql = "UPDATE Users SET image = '$image' WHERE users.id = $userId;";
+$sql = "UPDATE users SET image = '$image' WHERE users.id = $userId;";
         
 mysqli_query($connection, $sql);
 
-header('Location: ../../pages/userProfile.php');
+header('Location: ../../pages/user-profile.php');
 ?>

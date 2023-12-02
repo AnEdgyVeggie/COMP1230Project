@@ -1,5 +1,5 @@
 <?php
-include_once("../../assets/php/databaseHandler.php");
+include_once("../../assets/php/database-handler.php");
 ?>
 
 <!DOCTYPE html>
@@ -41,7 +41,7 @@ include_once("../../assets/php/databaseHandler.php");
         if ($resultCheck > 0) {
             while ($row = mysqli_fetch_assoc($result)) {
                 if ($row['emailAddress'] == $_COOKIE['email'])  {
-                    echo '<script>
+                    echo '<script defer>
                     location.href = "../register.php"
                     alert("This email is already registered, \nplease register a new email \nor login instead")
                     </script>';
@@ -50,7 +50,7 @@ include_once("../../assets/php/databaseHandler.php");
             }
             
         } if ($registered == false) {
-            echo '<script>
+            echo '<script defer>
             location.href = "../login.php?registered=true"
             alert("Registration success!")
             </script>';
@@ -58,12 +58,12 @@ include_once("../../assets/php/databaseHandler.php");
             $last = $_COOKIE['lastName'];
             $email = $_COOKIE['email'];
             $pass = $_COOKIE['password'];
-            $sql = "INSERT INTO users (firstName, lastName, emailAddress, password) VALUES
-            ('$first', '$last', '$email', '$pass');";
+            $sql = "INSERT INTO users (firstName, lastName, emailAddress, password, aboutMe, image) VALUES
+            ('$first', '$last', '$email', '$pass', '', '');";
             mysqli_query($connection, $sql);
 
         }
-        
+
     } 
 
     if (empty($_GET)) {
@@ -79,7 +79,7 @@ include_once("../../assets/php/databaseHandler.php");
                 && $row['password'] == $_COOKIE['password']){
                     $loginSuccess = true;
                     echo '<script> 
-                    location.href = "../userProfile.php?loggedIn=true";
+                    location.href = "../user-profile.php?login=true";
                     </script>';
                     setcookie('userId', $row['id'], time()+30*1000, '/');
                 }
@@ -87,7 +87,7 @@ include_once("../../assets/php/databaseHandler.php");
         }
         if (!$loginSuccess) {
 
-            echo '<script> 
+            echo '<script defer> 
             alert("Incorrect username or password");
             location.href = "../login.php";
             </script>';

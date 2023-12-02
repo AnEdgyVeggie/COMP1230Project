@@ -1,5 +1,5 @@
 <?php
-include_once("../assets\php\databaseHandler.php");
+include_once("../assets\php\database-handler.php");
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ include_once("../assets\php\databaseHandler.php");
     echo '<header>
     <nav>
         <span>
-            <a href="learningPaths.php">Learning Paths</a>|
+            <a href="learning-paths.php">Learning Paths</a>|
             <a href="../index.php">Home</a>
         </span>
         <span id="login">

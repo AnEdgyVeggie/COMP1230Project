@@ -1,12 +1,10 @@
 <?php
-include_once('pathFunctions.php');
+include_once('path-functions.php');
 // DB info.
-$dbServername = "localhost";
-$dbUsername = "root";
-$dbPassword = "";
-
-// Ethan's database
-$dbName = "project";
+$dbServerName = "localhost:3306";
+$dbUsername = "f3479568";
+$dbPassword = "CSESmmcc4!!";//"CSESmmcc4!!";
+$dbName = "f3479568_project";
 
 // Connection info.
 $conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
@@ -35,4 +33,4 @@ $sqlLikequery = "UPDATE resource_likes SET likes = (likes+1)
                  WHERE resource_index = $postedIndex AND path_id = $pathId;";
 
 mysqli_query($conn, $sqlLikequery);
-header('Location: ../../pages/learningPaths.php');
+header('Location: ../../pages/learning-paths.php');

@@ -2,16 +2,10 @@
 // Push resources function.
 function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResources, $pathId = 1) {
     // DB info.
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "project";
-
-    // GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
+    $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
+    $dbUsername = "f3479568"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+    $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
+    $dbName = "f3479568_project"; // this is the name of the database, yours will be f3######_databaseName
 
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -119,16 +113,10 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
 // Show resources function.
 function showResources($pathId) {
     // DB info.
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "project";
-
-    // GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
+    $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
+    $dbUsername = "f3479568"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+    $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
+    $dbName = "f3479568_project"; // this is the name of the database, yours will be f3######_databaseName
 
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -198,7 +186,7 @@ function showResources($pathId) {
 
             if (isset($_COOKIE['loggedIn'])) {
                 echo "
-                <form action='../assets/php/likePath.php' method='post' class='userFormOptions'>
+                <form action='../assets/php/like-path.php' method='post' class='userFormOptions'>
                     <input type='text' name='resource$i' value='" . $resourceArray[$i] . "' hidden='true'>
                     <input type='text' name='resourceList' value='" . $resourceString . "' hidden='true'>
                     <input type='text' name='pathId' value='$givenPathId' hidden='true'>
@@ -212,7 +200,7 @@ function showResources($pathId) {
             echo "                
                 <ul class='formList'>
                     <li>
-                        <form action='../assets/php/pathForm.php' method='post' class='userFormOptions'>
+                        <form action='../assets/php/path-form.php' method='post' class='userFormOptions'>
                             <input type='text' name='path_name' value='" . $givenPathName . "' hidden='true'>
                             <input type='text' name='path_desc' value='" . $givenPathDesc . "' hidden='true'>
                             <input type='text' name='resourceList' value='" . $resourceString . "' hidden='true'>
@@ -221,7 +209,7 @@ function showResources($pathId) {
                         </form>
                     </li>
                     <li>
-                        <form action='../assets/php/pathShare.php' method='post' class='userFormOptions'>
+                        <form action='../assets/php/path-share.php' method='post' class='userFormOptions'>
                             <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
                             <input type='submit' name='share' value='Share' class='userSubmitOptions'>
                         </form>
@@ -233,14 +221,14 @@ function showResources($pathId) {
         if ($_COOKIE['userId'] == $givenUserId) {
             echo "
             <li>
-                <form action='../assets/php/confirmDelete.php' method='post' class='userFormOptions'>
+                <form action='../assets/php/confirm-delete.php' method='post' class='userFormOptions'>
                     <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
                     <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
                     <input type='submit' name='delete' value='Delete Path' class='userSubmitOptions'>
                 </form>
             </li>
             <li>
-                <form action='../assets/php/editPaths.php' method='post' class='userFormOptions'>
+                <form action='../assets/php/edit-paths.php' method='post' class='userFormOptions'>
                     <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
                     <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
                     <input type='text' name='resourceList' id='resourceList' value='$resourceString' hidden='true'>
@@ -257,16 +245,10 @@ function showResources($pathId) {
 // Delete path function.
 function deletePath($pathId, $resourceId) {
         // DB info.
-        $dbServerName = "localhost";
-        $dbUsername = "root";
-        $dbPassword = "";
-        $dbName = "project";
-
-        //GBLearn
-        // $dbServerName = 'localhost:3306';
-        // $dbUsername = 'f3443253_amandagurney';
-        // $dbPassword = 'password';
-        // $dbName = 'f3443253_project';
+        $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
+        $dbUsername = "f3479568"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+        $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
+        $dbName = "f3479568_project"; // this is the name of the database, yours will be f3######_databaseName
 
         // Connection info.
         $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -283,16 +265,10 @@ function deletePath($pathId, $resourceId) {
 }
 // Get amount of paths to display on learning paths page.
 function getPathAmounts() {
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "project";
-
-    //GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
+    $dbServerName = "localhost:3306";
+    $dbUsername = "f3479568";
+    $dbPassword = "CSESmmcc4!!";
+    $dbName = "f3479568_project";
 
             $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
@@ -306,16 +282,10 @@ function getPathAmounts() {
 // Edit path.
 function getExistingValues($pathId) {
     // DB info.
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "project";
-
-    //GBLearn
-    // $dbServerName = 'localhost:3306';
-    // $dbUsername = 'f3443253_amandagurney';
-    // $dbPassword = 'password';
-    // $dbName = 'f3443253_project';
+    $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
+    $dbUsername = "f3479568"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+    $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
+    $dbName = "f3479568_project"; // this is the name of the database, yours will be f3######_databaseName
 
 
     // Connection info.
@@ -351,7 +321,7 @@ function getExistingValues($pathId) {
             $resourceArray
         )
     );
-    // Return arrays for use in editPaths.php.
+    // Return arrays for use in edit-paths.php.
     return [$infoArray, $pathId];
 }
 
@@ -362,9 +332,9 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
     echo "
     <link rel='stylesheet' href='../css/style.css'>
     <script src='../js/learning-path.js' defer></script>
-    <form method='post' action='pathForm.php' id='learning-path-form'>
+    <form method='post' action='path-form.php' id='learning-path-form'>
     <label for='path_name'>Learning Path Name</label>
-    <input type='text' id='path_name' name='path_name' value='". $infoArray['existingPathName'] . "'>
+    <input type='text' id='path_name' name='path_name' value='" . $infoArray['existingPathName'] . "'>
 
     <label for='path_desc'>Path Description</label>
     <textarea id='path_desc' name='path_desc' cols='30' rows='10'>" . $infoArray['existingPathDesc'] . "</textarea>
@@ -396,17 +366,11 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
 // Get number of resources in specified path.
 function resourceCount($pathId) {
         // DB info.
-        $dbServerName = "localhost";
-        $dbUsername = "root";
-        $dbPassword = "";
-        $dbName = "project";
+        $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
+        $dbUsername = "f3479568"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+        $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
+        $dbName = "f3479568_project"; // this is the name of the database, yours will be f3######_databaseName
 
-        //GBLearn
-        // $dbServerName = 'localhost:3306';
-        // $dbUsername = 'f3443253_amandagurney';
-        // $dbPassword = 'password';
-        // $dbName = 'f3443253_project';
-    
         // Connection info.
         $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
     

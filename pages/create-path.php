@@ -12,13 +12,13 @@
     <?php
         if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
 
-            echo  '<header>
+            echo '<header>
                     <nav>
                         <span>
-                            <a href="learningPaths.php">Learning Paths</a>|
-                            <a href="createPath.php">Create a Learning Path</a>|
+                            <a href="learning-paths.php">Learning Paths</a>|
+                            <a href="create-path.php">Create a Learning Path</a>|
                             <a href="../index.php">Home</a>|
-                            <a href="pages/userProfile.php">Profile</a>
+                            <a href="pages/user-profile.php">Profile</a>
                         </span>
                         <span id="login">
                             <a onclick="logout();">Logout</a>
@@ -30,7 +30,7 @@
             echo '<header>
             <nav>
                 <span>
-                    <a href="learningPaths.php">Learning Paths</a>|
+                    <a href="learning-paths.php">Learning Paths</a>|
                     <a href="../index.php">Home</a>
                 </span>
                 <span id="login">
@@ -45,7 +45,7 @@
     <p>Create a Learning Path</p>
     <br>
 
-    <form method="post" action="../assets/php/pathForm.php" id="learning-path-form">
+    <form method="post" action="../assets/php/path-form.php" id="learning-path-form">
         <label for="path_name">Learning Path Name</label>
         <input type="text" id="path_name" name="path_name">
 

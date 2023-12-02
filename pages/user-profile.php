@@ -4,11 +4,7 @@
 // if there is a query string in the URL (?loggedin=true), it will set 2 cookies for the entire site:
 // The users email, and a loggedIn=true, which will be used to keep the site facing a logged in user
 if (!empty($_GET)) {
-    $dbServerName = "localhost";
-    $dbUsername = "root";
-    $dbPassword = "";
-    $dbName = "project";
-    $connection = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
+    include("../assets/php/database-handler.php");
 
     setcookie("loggedIn", true, time() + 3600, '/');
 
@@ -25,10 +21,10 @@ if (!empty($_GET)) {
         }
         
     }
-    header('Location: userProfile.php');
+    header('Location: user-profile.php');
 }
 
-include_once("../assets/php/databaseHandler.php");
+include("../assets/php/database-handler.php");
 $id = $_COOKIE['userId'];
 $sql = "SELECT * FROM users WHERE id = $id";
         
@@ -52,13 +48,13 @@ echo '
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <link rel="stylesheet" href="../assets/css/userProfile.css">
+        <link rel="stylesheet" href="../assets/css/user-profile.css">
         <title>User Profile</title>
     </head>';
-        echo  '<header>
+        echo '<header>
                  <nav>
                      <span>
-                         <a href="learningPaths.php">Learning Paths</a>|
+                         <a href="learning-paths.php">Learning Paths</a>|
                          <a href="../index.php">Home</a>|
                          <a href="">Profile</a>
                      </span>
@@ -89,14 +85,13 @@ echo '<body>
                 # the text area is hidden from view as it is only used to send image data to the back end without using
                 # additional libraries
 
-            echo '<form id="input-image" method="POST" action="../assets/php/submitPhoto.php">
+            echo '<form id="input-image" method="POST" action="../assets/php/submit-photo.php">
                     <label>Change profile picture</label>
                     <div id="form-layout">
                     <input type="file" id="file" accept="image/jpeg" name="image">
                     <textarea id="image-text" name="imageText"></textarea> 
                     <button type="submit">Submit</button>
                     </div>
-                    <span id="warning">images can not exceed 675Kbs</apan>
                 </form>
 
             </div>
@@ -127,26 +122,10 @@ echo '<body>
         </script>
 ';
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         // ABOUT ME
         if ($aboutMe == "") {
             echo '
-            <form id="about-me" method="POST" action="../assets/php/submitAboutMe.php">
+            <form id="about-me" method="POST" action="../assets/php/submit-about-me.php">
                 <label for="about-me">Please Enter Your About Me</label>
                 <textarea cols="80" rows="10" id="about-me" name="about-me" ></textarea>
 

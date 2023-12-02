@@ -2,10 +2,10 @@
     // if there is a query string in the URL (?loggedin=true), it will set 2 cookies for the entire site:
     // The users email, and a loggedIn=true, which will be used to keep the site facing a logged in user
     if (!empty($_GET)) {
-        $dbServerName = "localhost";
-        $dbUsername = "root";
-        $dbPassword = "";
-        $dbName = "project";
+        $dbServerName = "localhost:3306";
+        $dbUsername = "f3479568";
+        $dbPassword = "CSESmmcc4!!";
+        $dbName = "f3479568_project";
         $connection = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
         setcookie("loggedIn", true, time() + 3600, '/');
@@ -27,7 +27,7 @@
     }
 
     // include needs to be after the if statement above
-    include("../assets/php/pathFunctions.php");
+    include("../assets/php/path-functions.php");
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -42,13 +42,13 @@
 <?php
 if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
 
-   echo  '<header>
+   echo '<header>
             <nav>
                 <span>
-                    <a href="learningPaths.php">Learning Paths</a>|
-                    <a href="createPath.php">Create a Learning Path</a>|
+                    <a href="learning-paths.php">Learning Paths</a>|
+                    <a href="create-path.php">Create a Learning Path</a>|
                     <a href="../index.php">Home</a>|
-                    <a href="userProfile.php">Profile</a>
+                    <a href="user-profile.php">Profile</a>
                 </span>
                 <span id="login">
                     <a onclick="logout();">Logout</a>
@@ -60,7 +60,7 @@ if (isset($_COOKIE['loggedIn']) || !empty($_GET)) {
     echo '<header>
     <nav>
         <span>
-            <a href="learningPaths.php">Learning Paths</a>|
+            <a href="learning-paths.php">Learning Paths</a>|
             <a href="../index.php">Home</a>
         </span>
         <span id="login">
