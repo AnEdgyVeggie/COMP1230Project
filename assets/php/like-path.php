@@ -2,7 +2,7 @@
 include_once('path-functions.php');
 $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
 $dbUsername = "f3443253"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
-$dbPassword = "spunkey10"; // this is the password YOU USE TO LOG INTO gblearn
+$dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
 $dbName = "f3443253_project"; // this is the name of the database, yours will be f3######_databaseName
 
 // Connection info.
