@@ -18,7 +18,7 @@
                             <a href="learning-paths.php">Learning Paths</a>|
                             <a href="create-path.php">Create a Learning Path</a>|
                             <a href="../index.php">Home</a>|
-                            <a href="pages/user-profile.php">Profile</a>
+                            <a href="user-profile.php">Profile</a>
                         </span>
                         <span id="login">
                             <a onclick="logout();">Logout</a>

@@ -161,10 +161,10 @@ function showResources($pathId) {
     // Page layout.
     echo "
         <div class='pathsGridItems'>
-            <h3>$givenPathName</h3> <br>
-            <span>Created by: $givenUserName <br>
-            $givenPathDesc <br></span>
-            <h3>Resources</h3> <br>
+            <h3>$givenPathName</h3>
+            <span><p>Created by: $givenUserName </p>
+            <p> $givenPathDesc </p></span>
+            <h3>Resources</h3>
     ";
         for ($i = 0; $i < count($resourceArray); $i++) {
             // Properly displays likes per resource.
@@ -208,25 +208,28 @@ function showResources($pathId) {
         }
 
         // If user owns the path, display delete / edit options.
-        if ($_COOKIE['userId'] == $givenUserId) {
-            echo "
-            <li>
-                <form action='../assets/php/confirm-delete.php' method='post' class='userFormOptions'>
-                    <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
-                    <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
-                    <input type='submit' name='delete' value='Delete Path' class='userSubmitOptions'>
-                </form>
-            </li>
-            <li>
-                <form action='../assets/php/edit-paths.php' method='post' class='userFormOptions'>
-                    <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
-                    <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
-                    <input type='text' name='resourceList' id='resourceList' value='$resourceString' hidden='true'>
-                    <input type='submit' name='edit' value='Edit Path' class='userSubmitOptions'>
-                </form>
-            </li>
-            ";
+        if (isset($_COOKIE['userId'])) {
+            if ($_COOKIE['userId'] == $givenUserId) {
+                echo "
+                <li>
+                    <form action='../assets/php/confirm-delete.php' method='post' class='userFormOptions'>
+                        <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
+                        <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
+                        <input type='submit' name='delete' value='Delete Path' class='userSubmitOptions'>
+                    </form>
+                </li>
+                <li>
+                    <form action='../assets/php/edit-paths.php' method='post' class='userFormOptions'>
+                        <input type='text' name='pathId' value='" . $givenPathId . "' hidden='true'>
+                        <input type='text' name='resourceId' value='" . $givenResourceId . "' hidden='true'>
+                        <input type='text' name='resourceList' id='resourceList' value='$resourceString' hidden='true'>
+                        <input type='submit' name='edit' value='Edit Path' class='userSubmitOptions'>
+                    </form>
+                </li>
+                ";
+            }
         }
+
     echo "
         <ul>
     </div>";
@@ -342,6 +345,7 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
 // Get number of resources in specified path.
 function resourceCount($pathId) {
     include("../assets/php/database-handler.php");
+
         // Connection info.
         $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
     

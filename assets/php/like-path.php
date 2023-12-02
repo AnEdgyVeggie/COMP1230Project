@@ -1,13 +1,8 @@
 <?php
-include_once('path-functions.php');
-// DB info.
-$dbServerName = "localhost:3306";
-$dbUsername = "f3479568";
-$dbPassword = "CSESmmcc4!!";//"CSESmmcc4!!";
-$dbName = "f3479568_project";
+include("../assets/php/database-handler.php");
 
 // Connection info.
-$conn = mysqli_connect($dbServername, $dbUsername, $dbPassword, $dbName);
+$conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
 $pathId = $_POST['pathId'];
 $resourceString = $_POST['resourceList'];

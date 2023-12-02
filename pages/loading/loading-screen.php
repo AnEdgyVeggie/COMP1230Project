@@ -1,5 +1,6 @@
 <?php
 include_once("../../assets/php/database-handler.php");
+ini_set('display_errors', 1);
 ?>
 
 <!DOCTYPE html>
