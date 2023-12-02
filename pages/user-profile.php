@@ -138,6 +138,22 @@ echo '<body>
             </span>
             ';
         }
+
+        
+        // PATHS
+        include_once('../assets/php/path-functions.php');
+        $id = $_COOKIE['userId'];
+        $sql = "SELECT * FROM paths WHERE user_id = $id";
+        $result = mysqli_query($connection, $sql);
+
+        echo "<div id='pathsGrid'>";
+        while ($pathArray = mysqli_fetch_assoc($result)) {
+            $pathId = $pathArray['path_id'];
+            debug_to_console($pathId);
+            showResources($pathId);
+        };
+        echo "</div>";
+
         ?>
         <script>
         const logout = () => {

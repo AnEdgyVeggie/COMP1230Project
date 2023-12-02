@@ -3,9 +3,9 @@
 function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResources, $pathId = 1) {
     // DB info.
     $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
-    $dbUsername = "f3479568"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+    $dbUsername = "f3443253"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
     $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
-    $dbName = "f3479568_project"; // this is the name of the database, yours will be f3######_databaseName
+    $dbName = "f3443253_project"; // this is the name of the database, yours will be f3######_databaseName
 
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -112,11 +112,10 @@ function pushResources($edit, $pathUser, $pathName, $pathDescription, $pathResou
 }
 // Show resources function.
 function showResources($pathId) {
-    // DB info.
     $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
-    $dbUsername = "f3479568"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+    $dbUsername = "f3443253"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
     $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
-    $dbName = "f3479568_project"; // this is the name of the database, yours will be f3######_databaseName
+    $dbName = "f3443253_project"; // this is the name of the database, yours will be f3######_databaseName
 
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -171,10 +170,10 @@ function showResources($pathId) {
     // Page layout.
     echo "
         <div class='pathsGridItems'>
-            <h3>$givenPathName</h3> <br>
-            <span>Created by: $givenUserName <br>
-            $givenPathDesc <br></span>
-            <h3>Resources</h3> <br>
+            <h3>$givenPathName</h3>
+            <span><p>Created by: $givenUserName </p>
+            <p> $givenPathDesc </p></span>
+            <h3>Resources</h3>
     ";
         for ($i = 0; $i < count($resourceArray); $i++) {
             // Properly displays likes per resource.
@@ -244,11 +243,10 @@ function showResources($pathId) {
 }
 // Delete path function.
 function deletePath($pathId, $resourceId) {
-        // DB info.
-        $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
-        $dbUsername = "f3479568"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
-        $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
-        $dbName = "f3479568_project"; // this is the name of the database, yours will be f3######_databaseName
+    $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
+    $dbUsername = "f3443253"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+    $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
+    $dbName = "f3443253_project"; // this is the name of the database, yours will be f3######_databaseName
 
         // Connection info.
         $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -265,10 +263,10 @@ function deletePath($pathId, $resourceId) {
 }
 // Get amount of paths to display on learning paths page.
 function getPathAmounts() {
-    $dbServerName = "localhost:3306";
-    $dbUsername = "f3479568";
-    $dbPassword = "CSESmmcc4!!";
-    $dbName = "f3479568_project";
+    $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
+    $dbUsername = "f3443253"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+    $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
+    $dbName = "f3443253_project"; // this is the name of the database, yours will be f3######_databaseName
 
             $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
@@ -281,12 +279,10 @@ function getPathAmounts() {
 
 // Edit path.
 function getExistingValues($pathId) {
-    // DB info.
     $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
-    $dbUsername = "f3479568"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+    $dbUsername = "f3443253"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
     $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
-    $dbName = "f3479568_project"; // this is the name of the database, yours will be f3######_databaseName
-
+    $dbName = "f3443253_project"; // this is the name of the database, yours will be f3######_databaseName
 
     // Connection info.
     $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
@@ -365,12 +361,11 @@ function showEditMenu($infoArray, $resourceArray, $pathId, $counter) {
 
 // Get number of resources in specified path.
 function resourceCount($pathId) {
-        // DB info.
-        $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
-        $dbUsername = "f3479568"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
-        $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
-        $dbName = "f3479568_project"; // this is the name of the database, yours will be f3######_databaseName
-
+    $dbServerName = "localhost:3306";  // this SHOULD be fine to leave
+    $dbUsername = "f3443253"; // this will be f3######       REMOVE THESE COMMENTS, FOR SOME REASON COMMENTS WERE CAUSING ERRORS
+    $dbPassword = "PASSWORD"; // this is the password YOU USE TO LOG INTO gblearn
+    $dbName = "f3443253_project"; // this is the name of the database, yours will be f3######_databaseName
+    
         // Connection info.
         $conn = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
     

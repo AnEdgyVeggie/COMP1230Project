@@ -1,6 +1,6 @@
 @font-face {
     font-family: 'Raleway';
-    src: url(../fonts/raleway.ttf);
+    src: url(../fonts/Raleway.ttf);
 }
 
 html {
@@ -19,7 +19,7 @@ body {
     flex-direction: column;
     display: flex;
     align-items:center ;
-    min-height: 97vh;
+    min-height: 98vh;
     width: 100%;
     font-family: 'Raleway';
 }
@@ -131,4 +131,63 @@ button{
 
 #warning {
     font-size: 12px;
+}
+#pathsGrid {
+    display: grid;
+    grid-template-columns: 550px 550px 550px;
+    gap: 10px;
+    padding: 5px;
+}
+.pathsGridItems {
+    display: grid;
+    border: 2px solid white;
+    padding: 10px;
+    margin: 20px;
+    background-color: rgba(2, 158, 93, 0.541);
+}
+.pathsGridItems > p {
+    margin: 2px;
+}
+.userFormOptions {
+    width: 100px;
+    height: 25px;
+    border-radius: 10px;
+    margin: 5px;
+    padding: 0px !important;
+}
+.userSubmitOptions {
+    width: 100px;
+}
+.userSubmitOptions:hover {
+    background-color: rgb(2, 158, 93);
+}
+.formList {
+    list-style-type: none;
+    padding: 0;
+    margin: 20px auto;
+}
+.formList > li {
+    display: inline-block;
+}
+
+#confirmDeleteSubmit:hover {
+    background-color: rgb(2, 158, 93);
+}
+#return:hover {
+    background-color: rgb(2, 158, 93);
+}
+#add-button:hover {
+    background-color: rgb(2, 158, 93);
+}
+#create {
+    margin: 0 auto;
+}
+
+#append > input {
+    width: 100%;
+    margin: 17px 0;
+}
+
+#given_resources1 {
+    width: 100%;
 }
