@@ -2,10 +2,10 @@
     // if there is a query string in the URL (?loggedin=true), it will set 2 cookies for the entire site:
     // The users email, and a loggedIn=true, which will be used to keep the site facing a logged in user
     if (!empty($_GET)) {
-        $dbServerName = "localhost";
-        $dbUsername = "root";
-        $dbPassword = "";
-        $dbName = "project";
+        $dbServerName = "localhost:3306";
+        $dbUsername = "f3479568";
+        $dbPassword = "CSESmmcc4!!";
+        $dbName = "f3479568_project";
         $connection = mysqli_connect($dbServerName, $dbUsername, $dbPassword, $dbName);
 
         setcookie("loggedIn", true, time() + 3600, '/');
